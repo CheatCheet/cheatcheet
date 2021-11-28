@@ -30,4 +30,15 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: 'Hello world'
+
+  posts:
+    index:
+      new: New Post
+    show:
+      edit: Edit Post
+      delete: Delete Post
+      confirm_delete: Are you sure?
+    edit:
+    new:
+    form:

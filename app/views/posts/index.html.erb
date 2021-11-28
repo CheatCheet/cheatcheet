@@ -1,0 +1,7 @@
+<header>
+  <%= link_to t('.new'), new_post_url %>
+</header>
+
+<% @posts.each do |post| %>
+  <%= link_to post.title, post %>
+<% end %>

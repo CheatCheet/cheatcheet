@@ -1,0 +1,8 @@
+<header>
+  <%= link_to t('.edit'), edit_post_path %>
+  <%= link_to t('.delete'), post_path, method: :delete, data: { confirm: t('.confirm_delete') } %>
+</header>
+
+<h2><%= @post.title %></h2>
+<p><%= @post.body %></p>
+

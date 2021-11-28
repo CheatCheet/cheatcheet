@@ -1,0 +1,7 @@
+<%= form_for( post , remote: true) do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_area :body %>
+  <%= f.text_field :env %>
+  <%= f.hidden_field :user_id, { value: current_user&.id || User.first.id } %>
+  <%= f.submit %>
+<% end %>
