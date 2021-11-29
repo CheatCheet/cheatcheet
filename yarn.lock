@@ -6048,6 +6048,11 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
+simpledotcss@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/simpledotcss/-/simpledotcss-1.0.4.tgz#45f51be448830daa81d37e02f74990733866c5a2"
+  integrity sha512-TwihmvcMiUkWWgeCZRROFgTqX8zvinN7aVCiaq9a9zRxuMDiwKUzurV7Qin5xMZ+WlRhzOG4XB3ror2yj/u5Gw==
+
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/snapdragon-node/-/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
