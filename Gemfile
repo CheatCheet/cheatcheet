@@ -19,6 +19,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rubocop'
+  gem 'rubocop-rails'
   gem 'web-console', '>= 4.1.0'
   gem 'listen', '~> 3.3'
   gem 'spring'
