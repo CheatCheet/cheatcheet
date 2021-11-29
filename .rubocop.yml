@@ -1,0 +1,83 @@
+require: rubocop-rails
+
+AllCops:
+  NewCops: disable
+  Exclude:
+    - '**/*.erb'
+    - vendor/bundle/**/*
+    - node_modules/**/*
+    - db/schema.rb
+  TargetRubyVersion: 3.0.2
+
+Layout/LineLength:
+  # Max: 90
+  Exclude:
+    - app/helpers/application_helper.rb
+    - config/environments/production.rb
+    - config/routes.rb
+    - db/seeds.rb
+    - test/application_system_test_case.rb
+    - bin/bundle
+    - Gemfile
+    - Rakefile
+    - config/initializers/devise.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/*.rb
+    - db/seeds.rb
+    - bin/bundle
+
+Metrics/AbcSize:
+  Exclude:
+    - db/migrate/*.rb
+    - app/helpers/application_helper.rb
+    - db/seeds.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - 'Guardfile'
+    - '**/*.rake'
+    - 'test/**/*.rb'
+    - 'spec/**/*.rb'
+    - config/routes.rb
+    - app/helpers/application_helper.rb
+    - db/seeds.rb
+    - config/environments/*.rb
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - app/helpers/application_helper.rb
+    - bin/bundle
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - app/helpers/application_helper.rb
+    - bin/bundle
+
+Metrics/ModuleLength:
+  Exclude:
+    - app/helpers/application_helper.rb
+
+Style/DateTime:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/SpecialGlobalVars:
+  Exclude:
+    - bin/bundle
+
+Style/InverseMethods:
+  Exclude:
+    - bin/yarn
+
+Style/GlobalStdStream:
+  Exclude:
+    - config/environments/production.rb
+
+Style/RedundantFetchBlock:
+  Exclude:
+    - config/puma.rb
