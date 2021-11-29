@@ -1,24 +1,22 @@
-# README
+# CHEAT CHEET
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Cheat cheet is a personal project, to test new versions of Ruby on Rails and Ruby, Turbodrive suite and admin gems such as Avo
 
-Things you may want to cover:
+Cheat cheet takes element of Blogs and Stack Overflow for users to create and post their code snippets
+A post contains a title (the question - `what`) and a body (the answer - `how`)
 
-* Ruby version
+## Suite
 
-* System dependencies
+- Ruby 3.0.3 (preferably installed with a Ruby version manager such as RVM)
+- Ruby on Rails 6.1.4
+- Turbo, Hotwire
+- gem Avo
+- gem Act As Taggable
+- gem Cancancan
+- library Simplecss
+- library Slim-select
 
-* Configuration
+## Future features
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Omniauth with Github
+- Different Front
