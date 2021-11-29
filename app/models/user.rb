@@ -8,5 +8,5 @@ class User < ApplicationRecord
 
   validates :email, :pseudo, uniqueness: true
 
-  has_many :posts
+  has_many :posts, dependent: :nullify
 end

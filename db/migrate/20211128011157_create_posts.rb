@@ -6,7 +6,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :title,      null: false, default: ''
       t.text :body,         null: false, default: ''
       t.string :env,        null: false, default: ''
-      t.string :tags,       array:true, null: false, default: []
+      t.string :tags,       array: true, null: false, default: []
       t.references :user
 
       t.timestamps null: false

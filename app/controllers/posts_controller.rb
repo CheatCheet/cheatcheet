@@ -15,7 +15,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    byebug
     if @post.save
       flash[:success] = 'Post successfully created'
       redirect_to @post
@@ -31,7 +30,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update_attribute(post_params)
+    if @post.update(post_params)
       flash[:success] = 'Post was successfully updated'
       redirect_to @post
     else
