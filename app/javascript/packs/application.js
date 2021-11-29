@@ -7,8 +7,8 @@ import * as ActiveStorage from "@rails/activestorage"
 import Rails from "@rails/ujs"
 import "channels"
 import 'tailwindcss/tailwind.css'
-import Turbolinks from "turbolinks"
+import '@hotwired/turbo-rails'
+import '../controllers/index'
 
 Rails.start()
-Turbolinks.start()
 ActiveStorage.start()
