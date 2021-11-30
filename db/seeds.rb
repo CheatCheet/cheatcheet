@@ -10,4 +10,8 @@
 
 user = User.create(pseudo: 'participant', email: 'participant@example.com', password: 'password')
 
-Post.create(title: '1st post', body: 'this is the body `this is the snippet`', user_id: user.id)
+10.times do |post_number|
+  Post.create(title: "Post #{post_number}",
+              body: 'this is the body `this is the snippet`',
+              user_id: user.id)
+end
