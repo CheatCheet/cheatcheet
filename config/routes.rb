@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  mount Avo::Engine, at: Avo.configuration.root_path
-
-  devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'posts#index'
+
+  devise_for :users
   resources :posts
 end

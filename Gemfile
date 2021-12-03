@@ -5,7 +5,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
-gem 'avo', '~> 1.17'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'hotwire-rails'

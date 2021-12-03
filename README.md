@@ -10,7 +10,6 @@ A post contains a title (the question - `what`) and a body (the answer - `how`)
 - Ruby 3.0.3 (preferably installed with a Ruby version manager such as RVM)
 - Ruby on Rails 6.1.4
 - Turbo, Hotwire
-- gem Avo
 - gem Act As Taggable
 - gem Cancancan
 - library Simplecss
