@@ -1,5 +1,5 @@
-@import "application";
-@import "mixins";
+@import 'application';
+@import 'mixins';
 
 .login {
   @include centered-col();
