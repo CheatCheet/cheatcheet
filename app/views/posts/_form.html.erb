@@ -1,6 +1,12 @@
 <%= form_for( post , remote: true) do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_area :body %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
   <%= f.hidden_field :user_id, value: current_user&.id %>
   <%= f.submit %>
 <% end %>
