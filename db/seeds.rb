@@ -1,17 +1,24 @@
 # frozen_string_literal: true
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+def create_user(params)
+  User.create!(params.merge(password: 'password'))
+end
 
-user = User.create(pseudo: 'participant', email: 'participant@example.com', password: 'password')
+warn '==> Running development environnement seed'
 
-10.times do |post_number|
-  Post.create(title: "Post #{post_number}",
-              body: 'this is the body `this is the snippet`',
-              user_id: user.id)
+if Rails.env.development?
+  3.times do |number|
+    pseudo = "user_#{number}"
+    create_user({ pseudo: pseudo, email: "#{pseudo}@example.com" })
+  end
+
+  15.times do
+    Post.create(
+      title: Faker::Lorem.question,
+      body: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
+      user_id: User.ids.sample
+    )
+  end
+
+  create_user({ pseudo: 'admin', email: 'admin@example.com', admin: true })
 end
