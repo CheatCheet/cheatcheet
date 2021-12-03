@@ -1,21 +1,56 @@
-# CHEAT CHEET
+# CHEATCHEET
 
-Cheat cheet is a personal project, to test new versions of Ruby on Rails and Ruby, Turbodrive suite and admin gems such as Avo
+**CheatCheet** is a project that aims to *simplify answers to specific tech questions*.
 
-Cheat cheet takes element of Blogs and Stack Overflow for users to create and post their code snippets
-A post contains a title (the question - `what`) and a body (the answer - `how`)
+Users can create posts that contains the correct answer to a question/problem they've one day met.
+A post contains a title (the Question - `What ?`) and a body (the Answer - `How ?`)
 
-## Suite
+## Technical Stack
 
-- Ruby 3.0.3 (preferably installed with a Ruby version manager such as RVM)
-- Ruby on Rails 6.1.4
-- Turbo, Hotwire
-- gem Act As Taggable
-- gem Cancancan
-- library Simplecss
-- library Slim-select
+- Ruby `3.0.3`
+- Ruby on Rails `6.1.4`
+- [Hotwire](https://hotwired.dev/)
+- [Simplecss](https://simplecss.org/)
 
-## Future features
+## Install
 
-- Omniauth with Github
-- Different Front
+### Pre-requisites
+- Ruby `3.0.3`
+- Ruby on Rails `6.1.4`
+- PostgreSQL `>~ 13`
+
+### Clone the repository
+```
+git clone git@github.com:phanremy/cheatcheet.git
+cd cheatcheet
+```
+
+### Install dependencies
+```
+bundle
+yarn
+```
+
+### Initialize the database
+```
+rails db:create db:migrate db:seed
+```
+
+### Serve
+
+#### If you're using [Overmind](https://github.com/DarthSim/overmind)
+```
+overmind s
+```
+
+#### Classique way
+```
+rails s
+```
+
+## Testing
+- [MiniTest](https://guides.rubyonrails.org/testing.html)
+```
+rails test
+```
+
