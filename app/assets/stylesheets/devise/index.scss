@@ -1,0 +1,22 @@
+@import "application";
+@import "mixins";
+
+.login {
+  @include centered-col();
+  form {
+    margin-top: 2vw;
+    width: 100%;
+    .login__fields {
+      @include centered-col();
+    }
+    .login__actions {
+      margin-top: 2vw;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      input[type="submit"] {
+        width: 50%;
+      }
+    }
+  }
+}
