@@ -16,7 +16,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'can create a post' do
-    assert_changes -> { Post.count } do
+    assert_changes -> { Post.first.title } do
       sign_in users(:default)
       post posts_url, params: {
         post: {
