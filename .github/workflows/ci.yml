@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        users: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Setup Ruby and install gems
         uses: ruby/setup-ruby@v1
