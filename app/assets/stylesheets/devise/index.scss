@@ -14,9 +14,13 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      input[type="submit"] {
+      input[type='submit'] {
         width: 50%;
       }
     }
   }
+}
+
+.login__buttons {
+  text-align: center;
 }
