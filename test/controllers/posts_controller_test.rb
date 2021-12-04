@@ -12,7 +12,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'can show a post' do
     get post_url(posts(:default))
-    assert_response :failed
+    assert_response :success
   end
 
   test 'can create a post' do
