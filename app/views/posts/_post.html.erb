@@ -1,3 +1,5 @@
-<h2><%= link_to post.title, post_path(post)  %></h2>
-<em><%= post.created_at.strftime("Created: %d/%m/%Y") %></em>
-<p><%= post.body %></p>
+<div>
+  <h2><%= link_to post.title, post_path(post) %></h2>
+  <em class='meta'><%= created_at_date(post) %></em>
+  <p class='content'><%= body_markdown(post) %></p>
+</div>

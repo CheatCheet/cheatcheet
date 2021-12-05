@@ -4,6 +4,12 @@ def create_user(params)
   User.create!(params.merge(password: 'password'))
 end
 
+def post_body
+  "#{Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4)}
+  \n
+  #{Faker::Markdown.block_code}"
+end
+
 warn '==> Running development environnement seed'
 
 if Rails.env.development?
@@ -15,7 +21,7 @@ if Rails.env.development?
   15.times do
     Post.create(
       title: Faker::Lorem.question,
-      body: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
+      body: post_body,
       user_id: User.ids.sample
     )
   end
