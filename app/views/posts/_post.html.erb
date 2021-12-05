@@ -1,5 +1,7 @@
 <div>
   <h2><%= link_to post.title, post_path(post) %></h2>
-  <em class='meta'><%= created_at_date(post) %></em>
-  <p class='content'><%= body_markdown(post) %></p>
+  <p class='meta'><em><%= created_at_date(post) %></em></p>
+  <div class='content'>
+    <%= body_markdown(post) %>
+  </div>
 </div>
