@@ -43,4 +43,23 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       delete post_url(Post.first)
     end
   end
+
+  test 'cannot access to the post creation page' do
+    get new_post_url
+    assert_redirected_to root_url
+  end
+
+  test "cannot update a post if the user is not it's owner" do
+    sign_in users(:default2)
+
+    get edit_post_url(Post.first)
+    assert_redirected_to root_url
+  end
+
+  test "cannot delete a post if the user is not it's owner" do
+    sign_in users(:default2)
+
+    delete post_url(Post.first)
+    assert_redirected_to root_url
+  end
 end
