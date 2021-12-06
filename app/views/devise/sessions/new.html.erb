@@ -1,13 +1,11 @@
 <div class="login">
   <h2>Log in</h2>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="login__fields">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'E-mail' %>
-      <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password' %>
-    </div>
-    <div class="login__actions">
-      <%= f.submit "Log in" %>
-    </div>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}",
+        omniauth_authorize_path(resource_name, provider),
+        form_class: 'login__buttons',
+        method: :post,
+        data: { turbo: false } %>
+    <br/>
   <% end %>
-  <%= render 'devise/shared/links' %>
 </div>
