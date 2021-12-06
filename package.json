@@ -10,6 +10,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
     "simpledotcss": "^1.0.4",
+    "slim-select": "^1.27.0",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"

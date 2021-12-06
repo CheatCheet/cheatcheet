@@ -8,6 +8,10 @@
       <%= f.label :body %>
       <%= f.text_area :body %>
     </div>
+    <div class="field">
+      <%= f.label :tags %>
+      <%= f.select :tags, [], {}, { multiple: true, data: { 'controller': 'slim-select' } } %>
+    </div>
     <%= f.hidden_field :user_id, value: current_user&.id %>
     <%= f.submit %>
   <% end %>
