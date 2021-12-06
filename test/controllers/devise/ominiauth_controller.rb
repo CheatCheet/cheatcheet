@@ -15,12 +15,11 @@ class OmniauthTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test 'test Github OmniAuth Callback' do
-    user_count = User.count
-    post user_github_omniauth_callback_url
-
+  test 'test Github OmniAuth Callback - should create 1 User' do
+    assert_difference -> { User.count }, 1 do
+      post user_github_omniauth_callback_url
+    end
     assert_response :redirect
-    assert_equal (user_count + 1), User.count
     assert_new_user_info(@github_omniauth, User.last)
   end
 
