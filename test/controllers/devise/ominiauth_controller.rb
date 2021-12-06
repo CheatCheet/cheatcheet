@@ -9,7 +9,13 @@ class OmniauthTest < ActionDispatch::IntegrationTest
     OmniAuth.config.mock_auth[:github] = @github_omniauth
   end
 
-  test 'test Github OmniAuth' do
+  test 'test Github OmniAuth Authorize' do
+    post user_github_omniauth_authorize_url
+
+    assert_response :redirect
+  end
+
+  test 'test Github OmniAuth Callback' do
     user_count = User.count
     post user_github_omniauth_callback_url
 

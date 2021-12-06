@@ -9,7 +9,7 @@ class OmniauthTest < ApplicationSystemTestCase
     OmniAuth.config.mock_auth[:github] = @github_omniauth
   end
 
-  test 'test Github OmniAuth' do
+  test 'Sign in with Github' do
     user_count = User.count
     visit new_user_session_url
     click_on 'Sign in with GitHub'
