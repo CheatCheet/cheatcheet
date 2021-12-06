@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: 14.16.1
+          node-version: 16.0.0
 
       - name: Find yarn cache location
         id: yarn-cache
@@ -45,6 +45,7 @@ jobs:
       - name: Run linters
         run: |
           bundle exec rubocop --parallel
+          yarn run eslint app/javascript
 
   tests:
     name: Tests
@@ -69,7 +70,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: 14.16.1
+          node-version: 16.0.0
 
       - name: Find yarn cache location
         id: yarn-cache
