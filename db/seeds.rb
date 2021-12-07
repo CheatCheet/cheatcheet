@@ -22,7 +22,8 @@ if Rails.env.development?
     Post.create(
       title: Faker::Lorem.question,
       body: post_body,
-      user_id: User.ids.sample
+      user_id: User.ids.sample,
+      tag_list: Array.new((1..3).to_a.sample) { Faker::ProgrammingLanguage.name }
     )
   end
 
