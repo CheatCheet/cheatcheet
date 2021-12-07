@@ -13,9 +13,8 @@ class OmniauthTest < ApplicationSystemTestCase
     assert_difference -> { User.count }, 1 do
       visit new_user_session_url
       click_on 'Sign in with GitHub'
+      assert_new_user_info(@github_omniauth, User.last)
     end
-
-    assert_new_user_info(@github_omniauth, User.last)
   end
 
   def assert_new_user_info(profile, user)
