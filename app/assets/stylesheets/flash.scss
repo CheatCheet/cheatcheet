@@ -1,0 +1,22 @@
+@import 'application';
+
+.flash {
+  display: flex;
+  padding: 1vw 0;
+  margin: 1vw 0;
+  &--success {
+    background-color: #69e765;
+  }
+  &--error {
+    background-color: #e76565;
+  }
+  .message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+  }
+}
