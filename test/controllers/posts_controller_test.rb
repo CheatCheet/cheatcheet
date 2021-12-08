@@ -46,7 +46,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'cannot access to the post creation page' do
     get new_post_url
-    assert_redirected_to root_url
+    assert_redirected_to new_user_session_url
   end
 
   test "cannot update a post if the user is not it's owner" do

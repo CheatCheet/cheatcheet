@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :find_post, except: %i[index new create]
-  before_action :logged?, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show]
   before_action :owner?, only: %i[edit update destroy]
 
   def index
@@ -60,9 +60,5 @@ class PostsController < ApplicationController
 
   def owner?
     redirect_to root_path if @post.user != current_user
-  end
-
-  def logged?
-    redirect_to root_path unless user_signed_in?
   end
 end
