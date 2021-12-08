@@ -24,28 +24,28 @@ class PostsController < ApplicationController
       flash[:success] = 'Post successfully created'
       redirect_to @post
     else
-      flash[:error] = 'Something went wrong'
-      render 'new'
+      flash.now[:error] = 'Something went wrong'
+      render_flash
     end
   end
 
   def update
     if @post.update(post_params)
-      flash[:success] = 'Post was successfully updated'
-      redirect_to @post
+      flash.now[:success] = 'Post was successfully updated'
     else
-      flash[:error] = 'Something went wrong'
-      render 'edit'
+      flash.now[:error] = 'Something went wrong'
     end
+    render_flash
   end
 
   def destroy
     if @post.destroy
       flash[:success] = 'Post was successfully deleted.'
+      redirect_to posts_path
     else
-      flash[:error] = 'Something went wrong'
+      flash.now[:error] = 'Something went wrong'
+      render_flash
     end
-    redirect_to posts_url
   end
 
   private
