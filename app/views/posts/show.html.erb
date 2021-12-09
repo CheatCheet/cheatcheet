@@ -1,7 +1,11 @@
-<% if user_signed_in? && @post.user == current_user %>
+<% if user_signed_in? %>
   <div class="post__actions">
-    <%= link_to t('.edit'), edit_post_path %>
-    <%= link_to t('.delete'), post_path, method: :delete, data: { confirm: t('.confirm_delete') } %>
+    <% if @post.user == current_user %>
+      <%= link_to t('.edit'), edit_post_path %>
+    <% end %>
+    <% if @post.user == current_user ||current_user.admin? %>
+      <%= link_to t('.delete'), post_path, method: :delete, data: { confirm: t('.confirm_delete') } %>
+    <% end %>
   </div>
 <% end %>
 <%= render @post %>
