@@ -59,6 +59,6 @@ class PostsController < ApplicationController
   end
 
   def owner?
-    redirect_to root_path if @post.user != current_user
+    redirect_to root_path if @post.user != current_user && !current_user.admin?
   end
 end
