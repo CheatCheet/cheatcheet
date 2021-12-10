@@ -20,7 +20,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.tag_list.add(tag_list_params) if tag_list_params
     if @post.save
       flash[:success] = 'Post successfully created'
       redirect_to @post
@@ -32,7 +31,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash.now[:success] = 'Post was successfully updated'
+      flash[:success] = 'Post was successfully updated'
     else
       flash.now[:error] = 'Something went wrong'
     end
@@ -52,11 +51,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :user_id, :env)
-  end
-
-  def tag_list_params
-    params[:post][:tag_list]
+    params.require(:post).permit(:title, :body, :user_id, :env, :tag_list)
   end
 
   def find_post
