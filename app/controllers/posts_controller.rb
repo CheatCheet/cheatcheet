@@ -3,7 +3,6 @@
 class PostsController < ApplicationController
   before_action :find_post, except: %i[index new create]
   before_action :authenticate_user!, except: %i[index show]
-  before_action :logged?, except: %i[index show]
   before_action :owner?, only: %i[edit update destroy]
 
   def index
@@ -25,28 +24,28 @@ class PostsController < ApplicationController
       flash[:success] = 'Post successfully created'
       redirect_to @post
     else
-      flash[:error] = 'Something went wrong'
-      render 'new'
+      flash.now[:error] = 'Something went wrong'
+      render_flash
     end
   end
 
   def update
     if @post.update(post_params)
-      flash[:success] = 'Post was successfully updated'
-      redirect_to @post
+      flash.now[:success] = 'Post was successfully updated'
     else
-      flash[:error] = 'Something went wrong'
-      render 'edit'
+      flash.now[:error] = 'Something went wrong'
     end
+    render_flash
   end
 
   def destroy
     if @post.destroy
       flash[:success] = 'Post was successfully deleted.'
+      redirect_to posts_path
     else
-      flash[:error] = 'Something went wrong'
+      flash.now[:error] = 'Something went wrong'
+      render_flash
     end
-    redirect_to posts_url
   end
 
   private
@@ -60,10 +59,6 @@ class PostsController < ApplicationController
   end
 
   def owner?
-    redirect_to root_path if @post.user != current_user
-  end
-
-  def logged?
-    redirect_to root_path unless user_signed_in?
+    redirect_to root_path if @post.user != current_user && !current_user.admin?
   end
 end

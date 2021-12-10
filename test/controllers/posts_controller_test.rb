@@ -38,7 +38,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'can destroy a post' do
-    assert_changes -> { Post.count } do
+    assert_changes -> { Post.count }, -1 do
       sign_in users(:post_owner)
       delete post_url(Post.first)
     end
@@ -61,5 +61,12 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
     delete post_url(Post.first)
     assert_redirected_to root_url
+  end
+
+  test 'can destroy a post if admin' do
+    assert_changes -> { Post.count }, -1 do
+      sign_in users(:admin)
+      delete post_url(Post.first)
+    end
   end
 end
