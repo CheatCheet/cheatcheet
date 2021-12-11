@@ -2,11 +2,11 @@
   <%= form_for post, data: { "turbo-frame" => "_top" } do |f| %>
     <div class="field">
       <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, style: 'width: 100%' %>
     </div>
     <div class="field">
       <%= f.label :body %>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, style: 'width: 100%' %>
     </div>
     <div class="field">
       <%= f.label :tags %>
@@ -15,3 +15,4 @@
     <%= f.hidden_field :user_id, value: current_user&.id %>
     <%= f.submit %>
   <% end %>
+<% end %>
