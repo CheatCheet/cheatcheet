@@ -16,11 +16,14 @@ if Rails.env.development?
     create_user({ pseudo: pseudo, email: "#{pseudo}@example.com" })
   end
 
+  3.times { |_number| Language.create(name: Faker::ProgrammingLanguage.name) }
+
   15.times do
     Post.create(
       title: Faker::Lorem.question,
       body: post_body,
-      user_id: User.ids.sample
+      user_id: User.ids.sample,
+      language_id: Language.ids.sample
     )
   end
 
