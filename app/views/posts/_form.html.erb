@@ -9,8 +9,8 @@
       <%= f.text_area :body, style: 'width: 100%' %>
     </div>
     <div class="field">
-      <%= f.label :tags %>
-      <%= f.select :tags, tag_collection(post.tag_list), {}, { multiple: true, data: { 'controller': 'slim-select' } } %>
+      <%= f.label :tag_list %>
+      <%= f.select :tag_list, tag_collection(post.tag_list), {}, { multiple: true, data: { 'controller': 'slim-select' } } %>
     </div>
     <%= f.hidden_field :user_id, value: current_user&.id %>
     <%= f.submit %>
