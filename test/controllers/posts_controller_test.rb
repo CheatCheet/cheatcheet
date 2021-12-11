@@ -91,7 +91,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     {
       title: Faker::Lorem.question,
       body: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
-      user_id: users(:post_owner).id
+      user_id: users(:post_owner).id,
+      language_id: languages(:ruby_on_rails).id
     }
   end
 
