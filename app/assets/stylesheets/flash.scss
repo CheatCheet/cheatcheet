@@ -1,4 +1,5 @@
 @import 'application';
+@import 'mixins';
 
 .flash {
   display: flex;
@@ -11,8 +12,7 @@
     background-color: #e76565;
   }
   .message {
-    display: flex;
-    justify-content: center;
+    @include centered-row();
     align-items: center;
     width: 100%;
     border-radius: 3px;

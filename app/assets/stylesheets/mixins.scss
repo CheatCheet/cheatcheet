@@ -7,3 +7,8 @@
   @include flex-col();
   align-items: center;
 }
+
+@mixin centered-row {
+  display: flex;
+  justify-content: center;
+}
