@@ -1,0 +1,5 @@
+<div class="search">
+  <%= form_with url: posts_path do |form| %>
+    <%= form.text_field :filter, placeholder: 'Search a term (Ruby on Rails, gem devise, etc.)' %>
+  <% end %>
+</div>

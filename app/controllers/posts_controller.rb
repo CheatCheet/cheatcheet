@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @posts = @posts.from_user(params[:user_id]) if params[:user_id]
+    @posts = @posts.related(params[:filter]) if params[:filter]
   end
 
   def show; end
@@ -51,7 +52,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :env, :user_id, :tags)
+    params.require(:post).permit(:title, :body, :env, :user_id, :tags, :filter)
   end
 
   def find_post
