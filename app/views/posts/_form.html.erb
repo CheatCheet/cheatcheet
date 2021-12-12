@@ -2,7 +2,7 @@
   <%= form_for post, data: { "turbo-frame" => "_top" } do |f| %>
     <div class="field">
       <%= f.label :title %>
-      <%= f.text_field :title, style: 'width: 100%' %>
+      <%= f.text_field :title, class: 'w-100' %>
     </div>
     <div class="field">
       <%= f.label :body %>
