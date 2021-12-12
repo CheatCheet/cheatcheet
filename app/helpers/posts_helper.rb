@@ -6,7 +6,7 @@ module PostsHelper
   end
 
   def body_markdown(post)
-    extensions = { fenced_code_blocks: true, strikethrough: true, tables: true, autolink: true }
+    extensions = { fenced_code_blocks: true, strikethrough: true, tables: true, autolink: true, safe_links_only: true }
     renderer = Redcarpet::Render::HTML.new(hard_wrap: true, link_attributes: { target: '_blank' })
     sanitize Redcarpet::Markdown.new(renderer, extensions).render(post.body),
              attributes: %w[href target]
