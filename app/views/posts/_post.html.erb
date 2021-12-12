@@ -4,7 +4,7 @@
   <div class='content'>
     <%= post.body %>
   </div>
-  <% bookmark_id = post.bookmark_id(current_user&.id) %>
+  <% bookmark_id = post.bookmarked?(current_user&.id) %>
   <% if bookmark_id %>
     <%= link_to "Remove bookmark", bookmark_path(bookmark_id), method: :delete, data: { confirm: 'Are you sure ?' } %>
   <% else %>

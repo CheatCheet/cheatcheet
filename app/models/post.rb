@@ -18,7 +18,12 @@ class Post < ApplicationRecord
                       action_text_rich_texts.body ILIKE '%#{value}%' OR stacks.name ILIKE '%#{value}%'")
                      }
 
-  def bookmark_id(user_id)
-    bookmarks.find_by(user_id: user_id)
+  def bookmarked?(user_id)
+    bookmarks.where(user_id: user_id).first
+  end
+
+  def self.bookmarked(user_id)
+    includes(:bookmarks)
+      .where(bookmarks: { user_id: user_id })
   end
 end
