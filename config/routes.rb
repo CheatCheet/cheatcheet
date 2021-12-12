@@ -16,5 +16,9 @@ Rails.application.routes.draw do
     resources :bookmarks, only: %i[create]
   end
 
+  namespace :bookmarks do
+    resources :posts, only: %i[index]
+  end
+
   resources :bookmarks, only: %i[destroy]
 end
