@@ -2,6 +2,8 @@
 
 class Post < ApplicationRecord
   belongs_to :user
+  belongs_to :stack
+
   has_rich_text :body
 
   validates :title, length: { minimum: 5 }

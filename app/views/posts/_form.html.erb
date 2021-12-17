@@ -9,6 +9,10 @@
       <%= f.rich_text_area :body %>
     </div>
     <div class="field">
+      <%= f.label :stack %>
+      <%= f.select :stack_id, stack_collection(post.stack_id), {}, { data: { 'controller': 'slim-select' } } %>
+    </div>
+    <div class="field">
       <%= f.label :public %>
       <%= f.select :public, [true, false] %>
     </div>
