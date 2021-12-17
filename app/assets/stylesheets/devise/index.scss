@@ -21,7 +21,7 @@
     form {
       margin-top: 0;
       @include centered-row();
-      input[type='submit'] {
+      button[type='submit'] {
         background-color: $github_dark;
       }
     }
