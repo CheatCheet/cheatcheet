@@ -8,7 +8,7 @@ A post contains a title (the Question - `What ?`) and a body (the Answer - `How 
 ## Technical Stack
 
 - Ruby `3.0.3`
-- Ruby on Rails `6.1.4`
+- Ruby on Rails `7.0`
 - [Hotwire](https://hotwired.dev/)
 - [Simplecss](https://simplecss.org/)
 
@@ -16,7 +16,7 @@ A post contains a title (the Question - `What ?`) and a body (the Answer - `How 
 
 ### Pre-requisites
 - Ruby `3.0.3`
-- Ruby on Rails `6.1.4`
+- Ruby on Rails `7.0`
 - PostgreSQL `>~ 13`
 
 ### Clone the repository
