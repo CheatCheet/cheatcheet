@@ -1,12 +1,16 @@
 <%= turbo_frame_tag 'post_form' do %>
   <%= form_for post, data: { "turbo-frame" => "_top" } do |f| %>
+    <% if post.errors.any? %>
+      <%= render 'shared/flash', message: posts.errors %>
+      <%#= posts.errors %>
+    <% end %>
     <div class="field">
       <%= f.label :title %>
       <%= f.text_field :title %>
     </div>
     <div class="field">
       <%= f.label :body %>
-      <%= f.text_area :body %>
+      <%= f.rich_text_area :body %>
     </div>
     <%= f.hidden_field :user_id, value: current_user&.id %>
     <%= f.submit %>

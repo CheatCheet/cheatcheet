@@ -1,0 +1,9 @@
+default:
+  record: Post
+  name: body
+  body: <p>In a <i>million</i> stars!</p>
+
+# one:
+#   record: name_of_fixture (ClassOfFixture)
+#   name: content
+#   body: <p>In a <i>million</i> stars!</p>
