@@ -1,6 +1,5 @@
 default:
-  title: Is this a post ?
-  body: This is the body of the post
+  title: How to make an app with Ruby on Rails?
   user: post_owner
   created_at: 'Fri, 03 Dec 2021 09:35:39.549868000 UTC +00:00'
   updated_at: 'Fri, 03 Dec 2021 23:32:25.947965000 UTC +00:00'
