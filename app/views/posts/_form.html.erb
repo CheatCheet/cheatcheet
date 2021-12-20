@@ -1,9 +1,5 @@
 <%= turbo_frame_tag 'post_form' do %>
   <%= form_for post, data: { "turbo-frame" => "_top" } do |f| %>
-    <% if post.errors.any? %>
-      <%= render 'shared/flash', message: posts.errors %>
-      <%#= posts.errors %>
-    <% end %>
     <div class="field">
       <%= f.label :title %>
       <%= f.text_field :title %>
