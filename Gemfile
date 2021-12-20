@@ -8,8 +8,8 @@ ruby '3.0.3'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'hotwire-rails'
-# image_processing - Active Storage Requirements
-# gem 'image_processing', '>= 1.2'
+# image_processing - Active Storage Requirements to upload image in post body
+gem 'image_processing', '>= 1.2'
 gem 'jbuilder', '~> 2.7'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem 'omniauth-rails_csrf_protection'
