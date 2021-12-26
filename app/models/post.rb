@@ -8,5 +8,5 @@ class Post < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
   scope :from_user, ->(id) { where('user_id = ?', id) }
-  scope :related, ->(value) { where("title LIKE %#{value}% OR body LIKE %#{value}%") }
+  scope :related, ->(value) { where("title ILIKE '%#{value}%' OR body ILIKE '%#{value}%'") }
 end
