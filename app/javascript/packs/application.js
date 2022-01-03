@@ -8,6 +8,8 @@ import Rails from "@rails/ujs"
 import "channels"
 import '@hotwired/turbo-rails'
 import '../controllers/index'
+import 'trix'
+import '@rails/actiontext'
 
 Rails.start()
 ActiveStorage.start()

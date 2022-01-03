@@ -1,0 +1,4 @@
+default:
+  record: default (Post)
+  name: body
+  body: With <quote>rails new</quote>
