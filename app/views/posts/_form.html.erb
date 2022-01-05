@@ -10,7 +10,7 @@
     </div>
     <div class="field">
       <%= f.label :stack %>
-      <%= f.select :stack_id, stack_collection(post.stack_id), {}, { data: { 'controller': 'slim-select' } } %>
+      <%= f.select :stack_id, stack_collection(post.stack_id), {}, { data: { 'controller': 'slim-select', addable: false } } %>
     </div>
     <div class="field">
       <%= f.label :public %>
