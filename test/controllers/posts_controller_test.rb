@@ -15,6 +15,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'cannot show a private post' do
+    get post_url(posts(:private))
+    assert_response :unauthorized
+  end
+
   test 'can create a post' do
     post_params = fake_post_params
     assert_changes -> { Post.count } do

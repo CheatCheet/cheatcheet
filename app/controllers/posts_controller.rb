@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :find_post, except: %i[index new create]
   before_action :authenticate_user!, except: %i[index show]
   before_action :owner?, only: %i[edit update destroy]
