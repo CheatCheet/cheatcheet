@@ -7,17 +7,14 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'can get list of posts' do
     get posts_url
+
     assert_response :success
   end
 
   test 'can show a post' do
     get post_url(posts(:default))
-    assert_response :success
-  end
 
-  test 'cannot show a private post' do
-    get post_url(posts(:private))
-    assert_response :unauthorized
+    assert_response :success
   end
 
   test 'can create a post' do
@@ -33,11 +30,13 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'can update a post' do
     post_params = fake_post_params
-    assert_changes -> { Post.first.title } do
+    post = Post.first
+    assert_changes -> { post.title } do
       sign_in users(:post_owner)
-      patch post_url(Post.first), params: { post: post_params }
+      patch post_url(post), params: { post: post_params }
 
-      compare_post_to_post_params(Post.first, post_params)
+      post.reload
+      compare_post_to_post_params(post, post_params)
     end
   end
 
@@ -50,6 +49,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'cannot access to the post creation page' do
     get new_post_url
+
     assert_redirected_to new_user_session_url
   end
 
@@ -57,6 +57,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:post_reader)
 
     get edit_post_url(Post.first)
+
     assert_redirected_to root_url
   end
 
@@ -72,6 +73,15 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       sign_in users(:admin)
       delete post_url(Post.first)
     end
+  end
+
+  test 'cannot show a private post' do
+    sign_in users(:post_reader)
+
+    get post_url(posts(:private))
+
+    assert_redirected_to root_url
+    assert_equal 'You are not authorized to access this page.', flash[:alert]
   end
 
   private

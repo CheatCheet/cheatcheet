@@ -3,12 +3,11 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
 
-  before_action :find_post, except: %i[index new create]
+  before_action :set_post, except: %i[index new create]
   before_action :authenticate_user!, except: %i[index show]
-  before_action :owner?, only: %i[edit update destroy]
 
   def index
-    @posts = Post.all.with_rich_text_body_and_embeds
+    @posts = Post.is_public.with_rich_text_body_and_embeds
     @posts = @posts.from_user(params[:user_id]) if params[:user_id]
   end
 
@@ -53,14 +52,10 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :env, :user_id, :tags)
+    params.require(:post).permit(:title, :body, :env, :user_id, :tags, :public)
   end
 
-  def find_post
+  def set_post
     @post = Post.find(params[:id])
-  end
-
-  def owner?
-    redirect_to root_path if @post.user != current_user && !current_user.admin?
   end
 end
