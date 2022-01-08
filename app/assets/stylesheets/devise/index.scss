@@ -1,5 +1,6 @@
 @import 'application';
 @import 'mixins';
+@import 'variables';
 
 .login {
   @include centered-col();
@@ -12,15 +13,21 @@
     .login__actions {
       margin-top: 2vw;
       width: 100%;
-      display: flex;
-      justify-content: center;
-      input[type='submit'] {
-        width: 50%;
+      @include centered-row();
+    }
+  }
+  .login__oauth {
+    width: 100%;
+    form {
+      margin-top: 0;
+      @include centered-row();
+      button[type='submit'] {
+        background-color: $github_dark;
       }
     }
   }
 }
 
-.login__buttons {
-  text-align: center;
+.login__submit {
+  width: 50%;
 }
