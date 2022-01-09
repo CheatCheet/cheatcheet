@@ -5,14 +5,12 @@ def create_user(params)
 end
 
 def post_body
-  "#{Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4)}
-  \n
-  #{Faker::Markdown.block_code}"
+  url = 'https://loripsum.net/api/1/short/code/bq/link/decorate'
+  URI.parse(url).open.read
 end
 
-warn '==> Running development environnement seed'
-
 if Rails.env.development?
+  warn '==> Running development environnement seed'
   3.times do |number|
     pseudo = "user_#{number}"
     create_user({ pseudo: pseudo, email: "#{pseudo}@example.com" })
@@ -27,4 +25,5 @@ if Rails.env.development?
   end
 
   create_user({ pseudo: 'admin', email: 'admin@example.com', admin: true })
+  warn '==> End of development environnement seed'
 end
