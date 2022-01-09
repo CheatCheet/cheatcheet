@@ -7,6 +7,6 @@ module PostsHelper
 
   def stack_collection(post_stack_id)
     options = Stack.order(:name).pluck(:name, :id)
-    options_for_select(options, post_stack_id)
+    options_for_select(options, post_stack_id || Stack.ruby_on_rails.id)
   end
 end

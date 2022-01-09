@@ -5,12 +5,11 @@
       <%= f.text_field :title, class: 'w-100' %>
     </div>
     <div class="field">
-      <%= f.label :body %>
-      <%= f.rich_text_area :body %>
+      <%= f.select :stack_id, stack_collection(post.stack_id), {}, { data: { 'controller': 'slim-select', addable: false } } %>
     </div>
     <div class="field">
-      <%= f.label :stack %>
-      <%= f.select :stack_id, stack_collection(post.stack_id), {}, { data: { 'controller': 'slim-select', addable: false } } %>
+      <%= f.label :body %>
+      <%= f.rich_text_area :body %>
     </div>
     <div class="field">
       <%= f.label :public %>
