@@ -5,19 +5,27 @@ require 'test_helper'
 class PostsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  test 'can get list of posts' do
+  test 'it renders a list of posts' do
     get posts_url
 
     assert_response :success
   end
 
-  test 'can show a post' do
+  test 'it filters and renders a list of posts' do
+    get posts_url(filter: 'javascript')
+
+    assert_response :success
+    assert_select 'div.post', 1
+    assert_select 'a', posts(:javascript).title
+  end
+
+  test 'it shows a post' do
     get post_url(posts(:default))
 
     assert_response :success
   end
 
-  test 'can create a post' do
+  test 'it creates a post' do
     post_params = fake_post_params
     assert_changes -> { Post.count } do
       sign_in users(:post_owner)
@@ -28,7 +36,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'can update a post' do
+  test 'updates a post' do
     post_params = fake_post_params
     post = Post.first
 
@@ -41,20 +49,20 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     compare_post_to_post_params(post, post_params)
   end
 
-  test 'can destroy a post' do
+  test 'it destroys a post' do
     assert_changes -> { Post.count }, -1 do
       sign_in users(:post_owner)
       delete post_url(Post.first)
     end
   end
 
-  test 'cannot access to the post creation page' do
+  test 'it cannot access to the post creation page if the user is not logged' do
     get new_post_url
 
     assert_redirected_to new_user_session_url
   end
 
-  test "cannot update a post if the user is not it's owner" do
+  test "it cannot update a post if the user is not it's owner" do
     sign_in users(:post_reader)
 
     get edit_post_url(Post.first)
@@ -62,21 +70,21 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
-  test "cannot delete a post if the user is not it's owner" do
+  test "it cannot delete a post if the user is not it's owner" do
     sign_in users(:post_reader)
 
     delete post_url(Post.first)
     assert_redirected_to root_url
   end
 
-  test 'can destroy a post if admin' do
+  test 'it can destroy a post if admin' do
     assert_changes -> { Post.count }, -1 do
       sign_in users(:admin)
       delete post_url(Post.first)
     end
   end
 
-  test 'cannot show a private post' do
+  test 'it cannot show a private post' do
     sign_in users(:post_reader)
 
     get post_url(posts(:private))
