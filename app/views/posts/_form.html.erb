@@ -8,7 +8,13 @@
       <%= f.label :body %>
       <%= f.rich_text_area :body %>
     </div>
-    <%= f.hidden_field :user_id, value: current_user&.id %>
-    <%= f.submit %>
+    <div class="field">
+      <%= f.label :public %>
+      <%= f.select :public, [true, false] %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :user_id, value: current_user&.id %>
+      <%= f.submit %>
+    </div>
   <% end %>
 <% end %>

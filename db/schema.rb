@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2021_12_18_170559) do
     t.string "title", default: "", null: false
     t.string "env", default: "", null: false
     t.string "tags", default: [], null: false, array: true
-    t.boolean "is_published", default: true
+    t.boolean "public", default: true
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

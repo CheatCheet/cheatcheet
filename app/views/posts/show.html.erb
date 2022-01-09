@@ -3,7 +3,7 @@
     <% if @post.user == current_user %>
       <%= link_to t('.edit'), edit_post_path %>
     <% end %>
-    <% if @post.user == current_user ||current_user.admin? %>
+    <% if can? :manage, @post %>
       <%= link_to t('.delete'), post_path, method: :delete, data: { confirm: t('.confirm_delete') } %>
     <% end %>
   </div>
