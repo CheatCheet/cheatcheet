@@ -16,24 +16,23 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'can create a post' do
+    post_params = fake_post_params
     assert_changes -> { Post.count } do
       sign_in users(:post_owner)
-      post posts_url, params: {
-        post: {
-          title: Faker::Lorem.question,
-          body: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
-          user_id: users(:post_owner).id
-        }
-      }
+      post posts_url, params: { post: post_params }
+
+      # NOTE: Post newly created is the first post
+      compare_post_to_post_params(Post.first, post_params)
     end
   end
 
   test 'can update a post' do
+    post_params = fake_post_params
     assert_changes -> { Post.first.title } do
       sign_in users(:post_owner)
-      patch post_url(Post.first), params: {
-        post: { title: 'New title' }
-      }
+      patch post_url(Post.first), params: { post: post_params }
+
+      compare_post_to_post_params(Post.first, post_params)
     end
   end
 
@@ -68,5 +67,21 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       sign_in users(:admin)
       delete post_url(Post.first)
     end
+  end
+
+  private
+
+  def fake_post_params
+    {
+      title: Faker::Lorem.question,
+      body: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
+      user_id: users(:post_owner).id
+    }
+  end
+
+  def compare_post_to_post_params(post, post_params)
+    assert_equal post.title, post_params[:title]
+    assert_equal post.user_id, post_params[:user_id]
+    assert_includes post.body.body.to_s, post_params[:body]
   end
 end

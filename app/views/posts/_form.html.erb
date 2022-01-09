@@ -6,7 +6,7 @@
     </div>
     <div class="field">
       <%= f.label :body %>
-      <%= f.text_area :body %>
+      <%= f.rich_text_area :body %>
     </div>
     <%= f.hidden_field :user_id, value: current_user&.id %>
     <%= f.submit %>

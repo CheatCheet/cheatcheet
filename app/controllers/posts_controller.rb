@@ -6,8 +6,8 @@ class PostsController < ApplicationController
   before_action :owner?, only: %i[edit update destroy]
 
   def index
-    @posts = Post.all
-    @posts = @posts.related(params[:filter]) if params[:filter]
+    @posts = Post.all.with_rich_text_body_and_embeds
+    @posts = @posts.from_user(params[:user_id]) if params[:user_id]
   end
 
   def show; end
