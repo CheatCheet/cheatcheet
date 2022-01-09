@@ -9,5 +9,4 @@ class Post < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
   scope :from_user, ->(id) { where('user_id = ?', id) }
-  scope :is_public, -> { where(public: true) }
 end
