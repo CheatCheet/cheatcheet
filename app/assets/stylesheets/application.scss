@@ -13,18 +13,18 @@
  *= require_tree .
  *= require_self
  */
- @import url('simpledotcss');
+@import url('simpledotcss');
 
- body {
-   max-width: 60rem;
- }
+body {
+  max-width: 60rem;
+}
 
- .container {
-   display: flex;
-   flex-direction: column;
- }
+.container {
+  display: flex;
+  flex-direction: column;
+}
 
- @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   pre {
     color: #212121 !important;
   }
