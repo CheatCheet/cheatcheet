@@ -31,13 +31,14 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test 'can update a post' do
     post_params = fake_post_params
     post = Post.first
-    assert_changes -> { post.title } do
-      sign_in users(:post_owner)
-      patch post_url(post), params: { post: post_params }
 
-      post.reload
-      compare_post_to_post_params(post, post_params)
+    assert_changes -> { Post.first.title }, post_params[:title] do
+      sign_in users(:post_owner)
+      patch post_url(Post.first), params: { post: post_params }
     end
+
+    post.reload
+    compare_post_to_post_params(post, post_params)
   end
 
   test 'can destroy a post' do

@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @posts = Post.is_public.with_rich_text_body_and_embeds
+    @posts = Post.accessible_by(current_ability).with_rich_text_body_and_embeds
     @posts = @posts.from_user(params[:user_id]) if params[:user_id]
   end
 
