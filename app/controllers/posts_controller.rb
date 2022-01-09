@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.accessible_by(current_ability).with_rich_text_body_and_embeds
     @posts = @posts.from_user(params[:user_id]) if params[:user_id]
+    @posts = @posts.related_to(params[:filter]) if params[:filter]
   end
 
   def show; end
