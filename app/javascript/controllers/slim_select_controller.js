@@ -10,7 +10,6 @@ export default class extends Controller {
       ...base,
       ...addSection
     }
-    debugger
 
     this.select = new SlimSelect(selectOptions)
   }
