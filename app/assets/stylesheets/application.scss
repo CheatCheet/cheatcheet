@@ -23,3 +23,9 @@
    display: flex;
    flex-direction: column;
  }
+
+ @media (prefers-color-scheme: dark) {
+  pre {
+    color: #212121 !important;
+  }
+}
