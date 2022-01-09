@@ -25,7 +25,7 @@ class PostsController < ApplicationController
       flash[:success] = 'Post successfully created'
       redirect_to @post
     else
-      flash.now[:error] = 'Something went wrong'
+      flash.now[:error] = @post.errors.full_messages
       render_flash
     end
   end
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       flash.now[:success] = 'Post was successfully updated'
     else
-      flash.now[:error] = 'Something went wrong'
+      flash.now[:error] = @post.errors.full_messages
     end
     render_flash
   end
