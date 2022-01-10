@@ -9,6 +9,7 @@ class Ability
     return if user.blank?
 
     can :manage, Post, user: user
+    can :manage, Bookmark, user: user
 
     return unless user.admin?
 

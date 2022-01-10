@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class BookmarksController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
-  before_action :find_post, only: %i[create]
-  before_action :find_bookmark, only: %i[destroy]
+  before_action :set_post, only: %i[create]
+  before_action :set_bookmark, only: %i[destroy]
 
   def create
     if Bookmark.create!(user: current_user, post: @post)
@@ -25,11 +26,11 @@ class BookmarksController < ApplicationController
 
   private
 
-  def find_post
+  def set_post
     @post = Post.find(params[:post_id])
   end
 
-  def find_bookmark
+  def set_bookmark
     @bookmark = Bookmark.find(params[:id])
   end
 end
