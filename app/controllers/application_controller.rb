@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     if current_user.nil?
+      # TODO: trying to bookmark will lead you to 'my bookmarks', which is not what we want (?)
       session[:next] = request.fullpath
       redirect_to new_user_session_url, alert: 'You have to log in to continue.'
     else

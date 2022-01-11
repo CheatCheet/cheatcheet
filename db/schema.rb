@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2021_12_18_170559) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id", "user_id"], name: "index_bookmarks_on_post_id_and_user_id", unique: true
     t.index ["post_id"], name: "index_bookmarks_on_post_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
