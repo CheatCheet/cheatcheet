@@ -2,10 +2,11 @@
 
 module Bookmarks
   class PostsController < ApplicationController
+    load_and_authorize_resource
     before_action :authenticate_user!
 
     def index
-      @posts = Post.bookmarked(current_user)
+      @posts = Post.with_rich_text_body.bookmarked(current_user)
     end
   end
 end
