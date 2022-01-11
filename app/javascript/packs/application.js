@@ -12,5 +12,8 @@ import 'trix'
 import '@rails/actiontext'
 import 'simpledotcss'
 
+//icons
+import '@fortawesome/fontawesome-free/css/all'
+
 Rails.start()
 ActiveStorage.start()
