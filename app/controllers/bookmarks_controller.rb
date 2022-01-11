@@ -7,7 +7,7 @@ class BookmarksController < ApplicationController
   before_action :set_bookmark, only: %i[destroy]
 
   def create
-    if Bookmark.create!(user: current_user, post: @post)
+    if Bookmark.create(user: current_user, post: @post)
       flash[:success] = 'Bookmark successfully created'
     else
       flash.now[:error] = 'Something went wrong'
