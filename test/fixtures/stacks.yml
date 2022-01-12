@@ -1,2 +1,5 @@
 ruby_on_rails:
   name: Ruby / Ruby On Rails
+
+javascript:
+  name: JavaScript
