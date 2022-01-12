@@ -20,7 +20,7 @@ class BookmarksControllerTest < ActionDispatch::IntegrationTest
 
   test 'can bookmark a post if logged in' do
     assert_changes -> { Bookmark.count }, 1 do
-      sign_in users(:post_reader)
+      sign_in users(:post_owner)
       post post_bookmarks_url(posts(:default))
 
       assert_response :success
