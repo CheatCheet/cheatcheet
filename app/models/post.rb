@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   default_scope { order(created_at: :desc) }
   scope :from_user, ->(id) { where('user_id = ?', id) }
   scope :related_to, lambda { |value|
-                       joins(:action_text_rich_text).where("posts.title ILIKE '%#{value}%' OR
-                      action_text_rich_texts.body ILIKE '%#{value}%'")
+                       joins(:action_text_rich_text, :stack).where("posts.title ILIKE '%#{value}%' OR
+                      action_text_rich_texts.body ILIKE '%#{value}%' OR stacks.name ILIKE '%#{value}%'")
                      }
 end
