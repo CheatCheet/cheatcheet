@@ -9,3 +9,9 @@ private:
   user: post_owner
   public: false
   stack: ruby_on_rails
+
+javascript:
+  title: How to avoid using Javascript in a application?
+  user: post_owner
+  public: true
+  stack: javascript

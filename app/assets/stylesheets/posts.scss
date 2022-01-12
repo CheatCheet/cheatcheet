@@ -2,7 +2,7 @@
 @import 'mixins';
 
 .post__actions {
-  width: 20%;
+  width: 30%;
   display: flex;
   justify-content: space-around;
   a:last-child {
@@ -19,13 +19,24 @@ form {
   }
 }
 
-.meta {
-  color: grey;
-  font-size: 1rem;
-  margin-top: -1rem;
+.search {
+  display: flex;
+  margin-top: 1vw;
+  form {
+    width: 100%;
+    @include centered-row();
+  }
 }
 
-.content {
-  margin-top: 1rem;
-  margin-bottom: 4rem;
+.post {
+  .post__meta {
+    color: grey;
+    font-size: 1rem;
+    margin-top: -1rem;
+  }
+  .post__content {
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+  }
 }
+

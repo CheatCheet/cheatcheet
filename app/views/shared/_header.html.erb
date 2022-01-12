@@ -6,7 +6,7 @@
     <%= link_to 'Home', root_path, class: 'nav-current' %>
     <%= link_to 'About', 'https://github.com/CheatCheet/cheatcheet', target:'_blank' %>
     <% if user_signed_in? %>
-      <%= link_to 'My posts', posts_path(user_id: current_user.id)%>
+      <%= link_to 'My posts', users_posts_path%>
       <%= link_to 'New post', new_post_path %>
       <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
     <% else %>

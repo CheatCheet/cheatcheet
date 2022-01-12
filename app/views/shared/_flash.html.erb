@@ -1,7 +1,15 @@
 <% flash.each do |type, message| %>
   <div class="flash flash--<%= type %>">
     <div class="message">
-      <%= message %>
+      <% if message.kind_of?(Array) %>
+        <ul>
+          <% message.each do |msg|%>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= message %>
+      <% end %>
     </div>
   </div>
 <% end %>

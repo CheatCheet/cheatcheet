@@ -2,3 +2,13 @@ default:
   record: default (Post)
   name: body
   body: With <quote>rails new</quote>
+
+private:
+  record: private (Post)
+  name: body
+  body: With <quote>gem install rails</quote>
+
+javascript:
+  record: javascript (Post)
+  name: body
+  body: You cannot, but you can limit it, by using Hotwire

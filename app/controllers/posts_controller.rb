@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.includes(:stack).accessible_by(current_ability).with_rich_text_body_and_embeds
     @posts = @posts.from_user(params[:user_id]) if params[:user_id]
+    @posts = @posts.related_to(params[:filter]) if params[:filter]
   end
 
   def show; end
@@ -25,7 +26,7 @@ class PostsController < ApplicationController
       flash[:success] = 'Post successfully created'
       redirect_to @post
     else
-      flash.now[:error] = 'Something went wrong'
+      flash.now[:error] = @post.errors.full_messages
       render_flash
     end
   end
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       flash.now[:success] = 'Post was successfully updated'
     else
-      flash.now[:error] = 'Something went wrong'
+      flash.now[:error] = @post.errors.full_messages
     end
     render_flash
   end
@@ -52,7 +53,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :public, :stack_id, :user_id)
+    params.require(:post).permit(:title, :body, :public, :stack_id, :user_id, :filter)
   end
 
   def set_post

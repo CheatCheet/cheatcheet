@@ -1,3 +1,4 @@
-<% @posts.each do |post| %>
-  <%= render post %>
+<%= turbo_frame_tag :posts do %>
+  <%= render 'search' %>
+  <%= render collection: @posts, partial: 'post' %>
 <% end %>
