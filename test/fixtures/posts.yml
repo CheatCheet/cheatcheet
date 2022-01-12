@@ -2,12 +2,10 @@ default:
   title: How to make an app with Ruby on Rails?
   user: post_owner
   public: true
-  created_at: 'Fri, 03 Dec 2021 09:35:39.549868000 UTC +00:00'
-  updated_at: 'Fri, 03 Dec 2021 23:32:25.947965000 UTC +00:00'
+  stack: ruby_on_rails
 
 private:
   title: How to install Ruby on Rails?
   user: post_owner
   public: false
-  created_at: 'Fri, 03 Dec 2021 09:35:39.549868000 UTC +00:00'
-  updated_at: 'Fri, 03 Dec 2021 23:32:25.947965000 UTC +00:00'
+  stack: ruby_on_rails

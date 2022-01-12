@@ -24,10 +24,23 @@ body {
   flex-direction: column;
 }
 
+
+.w-100 {
+  width: 100%;
+}
+
 @media (prefers-color-scheme: dark) {
   pre {
     color: #212121 !important;
   }
+
+  .trix-button {
+    background-color: #ffff !important;
+  }
+}
+
+body {
+  max-width: 50rem !important;
 }
 
 button, input[type='submit'] {

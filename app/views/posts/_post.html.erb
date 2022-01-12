@@ -1,6 +1,6 @@
 <div>
   <h2><%= link_to post.title, post_path(post) %></h2>
-  <p class='meta'><em><%= created_at_date(post) %></em></p>
+  <p class='meta'><em><%= created_at_date(post) %> - <%= post.stack.name %></em></p>
   <div class='content'>
     <%= post.body %>
   </div>
