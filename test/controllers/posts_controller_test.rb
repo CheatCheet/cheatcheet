@@ -36,7 +36,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'updates a post' do
+  test 'it updates a post' do
     post_params = fake_post_params
     post = Post.first
 
