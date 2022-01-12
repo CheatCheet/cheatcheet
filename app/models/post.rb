@@ -2,6 +2,8 @@
 
 class Post < ApplicationRecord
   belongs_to :user
+  belongs_to :stack
+
   has_rich_text :body
   has_one :action_text_rich_text, class_name: 'ActionText::RichText', as: :record, dependent: :destroy
 

@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @posts = Post.accessible_by(current_ability).with_rich_text_body_and_embeds
+    @posts = Post.includes(:stack).accessible_by(current_ability).with_rich_text_body_and_embeds
     @posts = @posts.from_user(params[:user_id]) if params[:user_id]
     @posts = @posts.related_to(params[:filter]) if params[:filter]
   end
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :env, :user_id, :tags, :filter, :public)
+    params.require(:post).permit(:title, :body, :public, :stack_id, :user_id, :filter)
   end
 
   def set_post

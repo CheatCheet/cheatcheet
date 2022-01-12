@@ -2,15 +2,18 @@
   <%= form_for post, data: { "turbo-frame" => "_top" } do |f| %>
     <div class="field">
       <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, class: 'w-100' %>
+    </div>
+    <div class="field">
+      <%= f.select :stack_id, stack_collection(post.stack_id), {}, { data: { 'controller': 'slim-select', addable: false } } %>
     </div>
     <div class="field">
       <%= f.label :body %>
       <%= f.rich_text_area :body %>
     </div>
-    <div class="field">
+    <div>
       <%= f.label :public %>
-      <%= f.select :public, [true, false] %>
+      <%= f.check_box :public %>
     </div>
     <div class="field">
       <%= f.hidden_field :user_id, value: current_user&.id %>

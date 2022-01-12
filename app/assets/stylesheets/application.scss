@@ -13,13 +13,36 @@
  *= require_tree .
  *= require_self
  */
- @import url('simpledotcss');
+@import url('simpledotcss');
 
- body {
-   max-width: 60rem;
- }
+body {
+  max-width: 60rem;
+}
 
- .container {
-   display: flex;
-   flex-direction: column;
- }
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.w-100 {
+  width: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  pre {
+    color: #212121 !important;
+  }
+
+  .trix-button {
+    background-color: #ffff !important;
+  }
+}
+
+body {
+  max-width: 50rem !important;
+}
+
+button, input[type='submit'] {
+  cursor: pointer !important;
+}
