@@ -9,5 +9,6 @@ class CreateStacks < ActiveRecord::Migration[6.1]
     end
 
     add_index :stacks, :name, unique: true
+    add_reference :posts, :stack, foreign_key: true
   end
 end

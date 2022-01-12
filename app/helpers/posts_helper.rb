@@ -5,8 +5,8 @@ module PostsHelper
     post.created_at.strftime('%b %d, %Y')
   end
 
-  def stack_collection(post_stack_id)
+  def stack_collection(stack_id)
     options = Stack.order(:name).pluck(:name, :id)
-    options_for_select(options, post_stack_id || Stack.ruby_on_rails.id)
+    options_for_select(options, stack_id || Stack.default.id)
   end
 end

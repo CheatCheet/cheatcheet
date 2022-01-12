@@ -3,13 +3,9 @@ default:
   user: post_owner
   public: true
   stack: ruby_on_rails
-  created_at: 'Fri, 03 Dec 2021 09:35:39.549868000 UTC +00:00'
-  updated_at: 'Fri, 03 Dec 2021 23:32:25.947965000 UTC +00:00'
 
 private:
   title: How to install Ruby on Rails?
   user: post_owner
   public: false
   stack: ruby_on_rails
-  created_at: 'Fri, 03 Dec 2021 09:35:39.549868000 UTC +00:00'
-  updated_at: 'Fri, 03 Dec 2021 23:32:25.947965000 UTC +00:00'

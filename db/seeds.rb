@@ -17,9 +17,9 @@ def post_body
   URI.parse(url).open.read
 end
 
-warn '==> Running stacks finding or creation'
+warn '==> Running stacks seeds'
 create_stacks
-warn '==> End of stacks finding or creation'
+warn '==> End of stacks seeds'
 
 if Rails.env.development?
   warn '==> Running development environnement seed'

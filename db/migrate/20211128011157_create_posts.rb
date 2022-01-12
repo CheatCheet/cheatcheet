@@ -5,9 +5,8 @@ class CreatePosts < ActiveRecord::Migration[6.1]
     create_table :posts do |t|
       t.string :title,         null: false, default: ''
       t.text :body,            null: false, default: ''
-      t.string :tags,          array: true, null: false, default: []
       t.boolean :public,       default: true
-      t.references :user,      foreign_key: true, null: false
+      t.references :user,      foreign_key: true
 
       t.timestamps null: false
     end
