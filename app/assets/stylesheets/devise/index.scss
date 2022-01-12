@@ -22,7 +22,7 @@
       margin-top: 0;
       @include centered-row();
       button[type='submit'] {
-        background-color: $github_dark;
+        background-color: $button_alternative;
       }
     }
   }

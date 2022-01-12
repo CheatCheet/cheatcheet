@@ -24,6 +24,17 @@ body {
   flex-direction: column;
 }
 
+
 .w-100 {
   width: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  pre {
+    color: #212121 !important;
+  }
+}
+
+button, input[type='submit'] {
+  cursor: pointer !important;
 }
