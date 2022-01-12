@@ -6,7 +6,7 @@ module Bookmarks
     before_action :authenticate_user!
 
     def index
-      @posts = Post.with_rich_text_body.bookmarked(current_user)
+      @posts = Post.includes(:stack).with_rich_text_body.bookmarked(current_user)
     end
   end
 end
