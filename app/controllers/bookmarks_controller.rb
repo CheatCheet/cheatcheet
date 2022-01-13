@@ -3,34 +3,26 @@
 class BookmarksController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
-  before_action :set_post, only: %i[create]
-  before_action :set_bookmark, only: %i[destroy]
 
   def create
-    if Bookmark.create(user: current_user, post: @post)
-      flash[:success] = 'Bookmark successfully created'
-    else
-      flash.now[:error] = 'Something went wrong'
-    end
-    render_flash
+    @post = Post.find(params[:post_id])
+    render_bookmark_button if Bookmark.create(user: current_user, post: @post)
   end
 
   def destroy
-    if @bookmark.destroy
-      flash[:success] = 'Bookmark successfully deleted'
-    else
-      flash.now[:error] = 'Something went wrong'
-    end
-    render_flash
+    @bookmark = Bookmark.find(params[:id])
+    @post = @bookmark.post
+    render_bookmark_button if @bookmark.destroy
   end
 
   private
 
-  def set_post
-    @post = Post.find(params[:post_id])
-  end
-
-  def set_bookmark
-    @bookmark = Bookmark.find(params[:id])
+  def render_bookmark_button
+    render turbo_stream: turbo_stream.update("bookmark_#{@post.id}",
+                                             partial: 'bookmarks/bookmark',
+                                             locals: {
+                                               user: current_user,
+                                               post: @post
+                                             })
   end
 end

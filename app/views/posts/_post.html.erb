@@ -4,14 +4,7 @@
   <div class='content'>
     <%= post.body %>
   </div>
-  <% bookmark_id = post.bookmarked?(current_user&.id) %>
-  <% if bookmark_id %>
-    <%= link_to bookmark_path(bookmark_id), method: :delete do %>
-      <i class="fas fa-bookmark"></i>
-    <% end %>
-  <% else %>
-    <%= link_to post_bookmarks_path(post), method: :post do %>
-      <i class="far fa-bookmark"></i>
-    <% end %>
+  <%= turbo_frame_tag "bookmark_#{post.id}" do %>
+    <%= render 'bookmarks/bookmark', post: post, user: current_user %>
   <% end %>
 </div>
