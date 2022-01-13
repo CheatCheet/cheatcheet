@@ -11,8 +11,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'it filters and renders a list of posts' do
-    get posts_url(filter: 'javascript')
+  test 'it searches and renders a list of posts' do
+    get posts_url(search: 'javascript')
 
     assert_response :success
     assert_select 'div.post', 1
