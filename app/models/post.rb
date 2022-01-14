@@ -13,17 +13,15 @@ class Post < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
   scope :from_user, ->(id) { where('user_id = ?', id) }
+  scope :bookmarked, ->(user_id) { includes(:bookmarks).where(bookmarks: { user_id: user_id }) }
   scope :related_to, lambda { |value|
                        joins(:action_text_rich_text, :stack).where("posts.title ILIKE '%#{value}%' OR
                       action_text_rich_texts.body ILIKE '%#{value}%' OR stacks.name ILIKE '%#{value}%'")
                      }
 
-  def bookmarked?(user_id)
-    bookmarks.where(user_id: user_id).first
-  end
+  def bookmarked_post?(user)
+    return false unless user
 
-  def self.bookmarked(user_id)
-    includes(:bookmarks)
-      .where(bookmarks: { user_id: user_id })
+    user.bookmarks.where(post_id: id).first
   end
 end
