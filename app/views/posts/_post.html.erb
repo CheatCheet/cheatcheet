@@ -1,7 +1,12 @@
 <div class="post">
   <h2><%= link_to post.title, post_path(post), target: '_top' %></h2>
-  <p class='meta'><em><%= created_at_date(post) %> - <%= post.stack.name %></em></p>
-  <div class='content'>
-    <%= post.body %>
+  <p class="post__meta"><em><%= created_at_date(post) %> - <%= post.stack.name %></em></p>
+  <div class="post__body">
+    <%= turbo_frame_tag "vote_#{post.id}" do %>
+      <%= render partial: 'posts/votes/vote', locals: { post: post} %>
+    <% end %>
+    <div class="content">
+      <%= post.body %>
+    </div>
   </div>
 </div>

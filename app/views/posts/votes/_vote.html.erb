@@ -1,0 +1,5 @@
+<div class="vote">
+  <%= render partial: 'posts/votes/form', locals: { post: post, value: true, disabled: user_signed_in? ? current_user.voted_up_on?(post) : true } %>
+  <span class="vote__total"><%= post.weighted_score %></span>
+  <%= render partial: 'posts/votes/form', locals: { post: post, value: false, disabled: user_signed_in? ? current_user.voted_down_on?(post) : true } %>
+</div>

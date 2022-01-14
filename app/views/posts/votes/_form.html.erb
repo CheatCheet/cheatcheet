@@ -1,0 +1,4 @@
+<%= form_with url: post_votes_path(post), scope: :post do |f| %>
+  <%= f.hidden_field :vote, value: value %>
+  <%= f.submit (value ? '+' : '-' ), disabled: disabled %>
+<% end %>

@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[github]
 
+  acts_as_voter
+
   validates :email, :pseudo, uniqueness: true
 
   has_many :posts, dependent: :nullify
