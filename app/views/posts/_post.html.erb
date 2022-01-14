@@ -4,7 +4,7 @@
   <div class='content'>
     <%= post.body %>
   </div>
-  <%= turbo_frame_tag "bookmark_#{post.id}" do %>
-    <%= render 'bookmarks/bookmark', post: post, user: current_user %>
+  <%= turbo_frame_tag "bookmark_options_for_post_#{post.id}" do %>
+    <%= render 'bookmarks/bookmark_options', post: post, user: current_user %>
   <% end %>
 </div>

@@ -20,7 +20,7 @@ class Post < ApplicationRecord
                      }
 
   def bookmarked_by?(user)
-    return false unless user == User
+    return nil unless user
 
     user.bookmarks.find_by(post_id: id)
   end
