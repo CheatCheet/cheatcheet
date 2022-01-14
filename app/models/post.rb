@@ -19,9 +19,9 @@ class Post < ApplicationRecord
                       action_text_rich_texts.body ILIKE '%#{value}%' OR stacks.name ILIKE '%#{value}%'")
                      }
 
-  def bookmarked_post?(user)
-    return false unless user
+  def bookmarked_by?(user)
+    return false unless user == User
 
-    user.bookmarks.where(post_id: id).first
+    user.bookmarks.find_by(post_id: id)
   end
 end
