@@ -11,4 +11,14 @@ Rails.application.routes.draw do
   namespace :users do
     resources :posts, only: :index
   end
+
+  resources :posts do
+    resources :bookmarks, only: %i[create]
+  end
+
+  namespace :bookmarks do
+    resources :posts, only: %i[index]
+  end
+
+  resources :bookmarks, only: %i[destroy]
 end
