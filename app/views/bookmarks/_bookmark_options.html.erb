@@ -1,6 +1,5 @@
-<% bookmark_id = post.bookmarked_by?(user) %>
-<% if bookmark_id %>
-  <%= button_to bookmark_path(bookmark_id), method: :delete, class: 'btn-bookmarked' do %>
+<% if post.bookmark_id %>
+  <%= button_to bookmark_path(post.bookmark_id ), method: :delete, class: 'btn-bookmarked' do %>
     <i class="fas fa-bookmark"></i>
   <% end %>
 <% else %>

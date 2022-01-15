@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  include Posts::BookmarkId
+
   load_and_authorize_resource
 
   before_action :set_post, except: %i[index new create]
@@ -10,6 +12,7 @@ class PostsController < ApplicationController
     @posts = Post.includes(:stack).accessible_by(current_ability).with_rich_text_body
     @posts = @posts.from_user(params[:user_id]) if params[:user_id]
     @posts = @posts.related_to(params[:search]) if params[:search]
+    set_posts_bookmark_id
   end
 
   def show; end

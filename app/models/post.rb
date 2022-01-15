@@ -19,9 +19,5 @@ class Post < ApplicationRecord
                       action_text_rich_texts.body ILIKE '%#{value}%' OR stacks.name ILIKE '%#{value}%'")
                      }
 
-  def bookmarked_by?(user)
-    return nil unless user
-
-    user.bookmarks.find_by(post_id: id)
-  end
+  attr_accessor :bookmark_id
 end
