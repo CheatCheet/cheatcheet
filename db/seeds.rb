@@ -12,9 +12,12 @@ def create_user(params)
   User.create!(params.merge(password: 'password'))
 end
 
-def post_body
-  url = 'https://loripsum.net/api/1/short/code/bq/link/decorate'
-  URI.parse(url).open.read
+def post_bodies
+  @post_bodies ||=
+    10.times.map do |_i|
+      url = 'https://loripsum.net/api/1/short/code/bq/link/decorate'
+      URI.parse(url).open.read
+    end
 end
 
 warn '==> Running stacks seeds'
@@ -28,15 +31,23 @@ if Rails.env.development?
     create_user({ pseudo: pseudo, email: "#{pseudo}@example.com" })
   end
 
-  15.times do
+  30.times do
     Post.create(
       title: Faker::Lorem.question,
-      body: post_body,
+      body: post_bodies.sample,
       user_id: User.ids.sample,
       stack_id: Stack.ids.sample
     )
   end
 
-  create_user({ pseudo: 'admin', email: 'admin@example.com', admin: true })
+  admin = create_user({ pseudo: 'admin', email: 'admin@example.com', admin: true })
+
+  3.times do
+    Bookmark.create(
+      user_id: admin.id,
+      post_id: Post.ids.sample
+    )
+  end
+
   warn '==> End of development environnement seed'
 end
