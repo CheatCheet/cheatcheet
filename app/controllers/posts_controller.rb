@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @posts = Post.with_inclusions.accessible_by(current_ability)
+    @posts = Post.with_all_inclusions.accessible_by(current_ability)
     @posts = @posts.from_user(params[:user_id]) if params[:user_id]
     @posts = @posts.related_to(params[:search]) if params[:search]
     set_paginated_posts

@@ -9,7 +9,7 @@ module Bookmarks
     before_action :authenticate_user!
 
     def index
-      @posts = Post.with_inclusions.bookmarked(current_user)
+      @posts = Post.with_all_inclusions.bookmarked(current_user)
       set_paginated_posts
       set_posts_bookmark_id
     end
