@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
+
   rescue_from CanCan::AccessDenied do |exception|
     if current_user.nil?
       respond_to do |format|

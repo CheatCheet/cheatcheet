@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  include Posts::Pagination
   include Posts::BookmarkId
 
   load_and_authorize_resource
@@ -9,9 +10,10 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @posts = Post.includes(:stack).accessible_by(current_ability).with_rich_text_body
+    @posts = Post.with_inclusions.accessible_by(current_ability)
     @posts = @posts.from_user(params[:user_id]) if params[:user_id]
     @posts = @posts.related_to(params[:search]) if params[:search]
+    set_paginated_posts
     set_posts_bookmark_id
   end
 

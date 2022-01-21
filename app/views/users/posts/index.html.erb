@@ -1,3 +1,6 @@
-<% @posts.each do |post| %>
-  <%= render 'posts/post', post: post %>
+<% if @posts.count.zero?%>
+  <p>Create your first post</p>
+<% else %>
+  <%= render collection: @posts, partial: 'posts/post' %>
+  <%== pagy_nav(@pagy) %>
 <% end %>

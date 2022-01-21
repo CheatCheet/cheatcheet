@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module PostsHelper
+  include Pagy::Frontend
+
   def created_at_date(post)
     post.created_at.strftime('%b %d, %Y')
   end

@@ -1,4 +1,9 @@
-<%= turbo_frame_tag :posts do %>
-  <%= render 'search' %>
-  <%= render collection: @posts, partial: 'post' %>
+<% if @posts.count.zero?%>
+  <p>No Post</p>
+<% else %>
+  <%= turbo_frame_tag :posts do %>
+    <%= render 'search' %>
+    <%= render collection: @posts, partial: 'post' %>
+    <%== pagy_nav(@pagy) %>
+  <% end %>
 <% end %>

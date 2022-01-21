@@ -8,7 +8,6 @@ module Posts
       return unless current_user
 
       bookmarks_data = Hash[current_user.bookmarks.pluck(:post_id, :id)]
-
       @posts.each { |post| post.bookmark_id = bookmarks_data[post.id] }
     end
   end

@@ -1,1 +1,6 @@
-<%= render collection: @posts, partial: 'posts/post' %>
+<% if @posts.count.zero?%>
+  <p>Create your first bookmark</p>
+<% else %>
+  <%= render collection: @posts, partial: 'posts/post' %>
+  <%== pagy_nav(@pagy) %>
+<% end %>

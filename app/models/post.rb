@@ -20,4 +20,8 @@ class Post < ApplicationRecord
                      }
 
   attr_accessor :bookmark_id
+
+  def self.with_inclusions
+    includes(:stack).with_rich_text_body
+  end
 end

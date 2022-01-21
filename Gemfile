@@ -14,6 +14,8 @@ gem 'image_processing', '>= 1.2'
 gem 'jbuilder', '~> 2.7'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem 'omniauth-rails_csrf_protection'
+# pagination gem with infinite scrolling options
+gem 'pagy'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.0'
@@ -21,6 +23,7 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
+  # N+1 query detecting gem
   gem 'bullet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'faker'
