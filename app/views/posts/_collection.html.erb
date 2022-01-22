@@ -3,7 +3,9 @@
     <%= render collection: @posts, partial: 'posts/post' %>
     <% if @pagy.next %>
       <%= turbo_frame_tag :posts, loading: :lazy, src: build_posts_url(page: @pagy.next) do %>
-        <!--- put your loading prompt and/or spinner here --->
+        <div class="spinner-container">
+          <i class="fas fa-circle-notch fa-spin"></i>
+        </div>
       <% end %>
     <% end %>
   <% end %>

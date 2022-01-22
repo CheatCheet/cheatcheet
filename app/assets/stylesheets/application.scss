@@ -24,6 +24,17 @@ body {
   flex-direction: column;
 }
 
+.spinner-container {
+  width: 100%;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    font-size: 60px;
+  }
+}
 
 .w-100 {
   width: 100%;
