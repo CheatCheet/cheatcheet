@@ -1,9 +1,6 @@
 <% if @posts.count.zero?%>
-  <p>No Post</p>
+  <p>No Posts</p>
 <% else %>
-  <%= turbo_frame_tag :posts do %>
-    <%= render 'search' %>
-    <%= render collection: @posts, partial: 'post' %>
-    <%== pagy_nav(@pagy) %>
-  <% end %>
+  <%= render 'search' %>
+  <%= render 'collection', infinite_scrolling: true %>
 <% end %>

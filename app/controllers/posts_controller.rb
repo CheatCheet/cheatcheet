@@ -17,6 +17,7 @@ class PostsController < ApplicationController
     set_posts_bookmark_id
   end
 
+  # TODO: set post bookmark id
   def show; end
 
   def edit; end

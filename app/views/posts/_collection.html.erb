@@ -1,0 +1,13 @@
+<% if infinite_scrolling %>
+  <%= turbo_frame_tag :posts do %>
+    <%= render collection: @posts, partial: 'posts/post' %>
+    <% if @pagy.next %>
+      <%= turbo_frame_tag :posts, loading: :lazy, src: build_posts_url(page: @pagy.next) do %>
+        <!--- put your loading prompt and/or spinner here --->
+      <% end %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= render collection: @posts, partial: 'posts/post' %>
+  <%== pagy_nav(@pagy) %>
+<% end %>

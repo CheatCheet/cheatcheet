@@ -31,7 +31,9 @@ if Rails.env.development?
     create_user({ pseudo: pseudo, email: "#{pseudo}@example.com" })
   end
 
-  30.times do
+  create_user({ pseudo: 'admin', email: 'admin@example.com', admin: true })
+
+  1000.times do
     Post.create(
       title: Faker::Lorem.question,
       body: post_bodies.sample,
@@ -40,11 +42,9 @@ if Rails.env.development?
     )
   end
 
-  admin = create_user({ pseudo: 'admin', email: 'admin@example.com', admin: true })
-
-  3.times do
+  100.times do
     Bookmark.create(
-      user_id: admin.id,
+      user_id: User.ids.sample,
       post_id: Post.ids.sample
     )
   end

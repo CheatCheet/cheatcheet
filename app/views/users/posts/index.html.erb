@@ -1,6 +1,5 @@
 <% if @posts.count.zero?%>
   <p>Create your first post</p>
 <% else %>
-  <%= render collection: @posts, partial: 'posts/post' %>
-  <%== pagy_nav(@pagy) %>
+  <%= render 'posts/collection', infinite_scrolling: false %>
 <% end %>
