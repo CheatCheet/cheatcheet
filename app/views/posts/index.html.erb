@@ -2,5 +2,5 @@
   <p>No Posts</p>
 <% else %>
   <%= render 'search' %>
-  <%= render 'collection', infinite_scrolling: true %>
+  <%= render 'collection', infinite_scroll: infinite_scroll_in_current_page? %>
 <% end %>

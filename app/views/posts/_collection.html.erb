@@ -1,4 +1,4 @@
-<% if infinite_scrolling %>
+<% if infinite_scroll %>
   <%= turbo_frame_tag :posts do %>
     <%= render collection: @posts, partial: 'posts/post' %>
     <% if @pagy.next %>
