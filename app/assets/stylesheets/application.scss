@@ -6,7 +6,7 @@
  * vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
@@ -22,6 +22,38 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+}
+
+#return-to-top {
+  position: sticky;
+  top: 90vh;
+  flex-grow:1;
+  z-index: -99;
+  opacity:0;
+  transition: all 0.4s ease;
+  margin-left: calc( (-100vw + 60rem ) /2);
+
+  &.active {
+    z-index: 99;
+    opacity: 1;
+  }
+
+  button {
+    padding: 16px;
+    font-size: 24px;
+    width: fit-content;
+  }
+}
+
+@media(max-width: 768px) {
+  #return-to-top  {
+    margin-left: 0px;
+
+    button {
+      font-size: 16px;
+      width: 100%;
+    }
+  }
 }
 
 .spinner-container {
