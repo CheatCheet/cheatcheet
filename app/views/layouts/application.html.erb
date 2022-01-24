@@ -14,7 +14,7 @@
       <%= render 'shared/flash' %>
     <% end %>
     <div class="container">
-      <% if infinite_scroll_in_current_page? %>
+      <% if infinite_scroll_on_current_page? %>
         <%= render 'shared/return_to_top' %>
       <% end %>
       <%= yield %>

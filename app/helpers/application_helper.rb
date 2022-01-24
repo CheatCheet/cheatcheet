@@ -5,7 +5,7 @@ module ApplicationHelper
     posts/index
   ].freeze
 
-  def infinite_scroll_in_current_page?
+  def infinite_scroll_on_current_page?
     ALLOWED_PATHS.include?(request.path_parameters.values.join('/'))
   end
 end
