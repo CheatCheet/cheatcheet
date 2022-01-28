@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :email, :pseudo, uniqueness: true
 
   has_many :posts, dependent: :nullify
+  has_many :bookmarks, dependent: :nullify
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

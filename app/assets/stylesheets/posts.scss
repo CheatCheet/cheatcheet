@@ -29,11 +29,17 @@ form {
 }
 
 .post {
+  .post__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+  }
   .post__meta {
     color: grey;
     font-size: 1rem;
     margin-top: -1rem;
   }
+
   .post__body {
     display: flex;
     turbo-frame {
@@ -46,7 +52,7 @@ form {
         align-items: center;
       }
     }
-    .content {
+    .post__content {
       margin: 1rem 0;
     }
   }

@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 2022_01_14_152300) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id", "user_id"], name: "index_bookmarks_on_post_id_and_user_id", unique: true
+    t.index ["post_id"], name: "index_bookmarks_on_post_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title", default: "", null: false
     t.text "body", default: "", null: false
@@ -111,6 +121,8 @@ ActiveRecord::Schema.define(version: 2022_01_14_152300) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookmarks", "posts"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "posts", "stacks"
   add_foreign_key "posts", "users"
 end

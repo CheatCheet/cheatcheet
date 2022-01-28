@@ -1,12 +1,24 @@
-<div class="post">
-  <h2><%= link_to post.title, post_path(post), target: '_top' %></h2>
-  <p class="post__meta"><em><%= created_at_date(post) %> - <%= post.stack.name %></em></p>
-  <div class="post__body">
-    <%= turbo_frame_tag "vote_#{post.id}" do %>
-      <%= render partial: 'posts/votes/vote', locals: { post: post} %>
-    <% end %>
-    <div class="content">
-      <%= post.body %>
+<%= turbo_frame_tag dom_id(post) do %>
+  <div class="post">
+    <div class="post__header">
+      <h2><%= link_to post.title, post_path(post), target: '_top' %></h2>
+      <%= turbo_frame_tag "bookmark_options_for_post_#{post.id}" do %>
+        <%= render 'bookmarks/bookmark_options', post: post, user: current_user %>
+      <% end %>
     </div>
+    <div class='post__meta'><em><%= created_at_date(post) %></em></div>
+    <div class="post__body">
+      <%= turbo_frame_tag "vote_#{post.id}" do %>
+        <%= render partial: 'posts/votes/vote', locals: { post: post} %>
+      <% end %>
+      <div class='post__content'>
+        <%= post.body %>
+      </div>
+    </div>
+    <%= link_to posts_url(stack: post.stack.name), target: '_top' do %>
+      <button class="stack__button">
+        <%= post.stack.name %>
+      </button>
+    <% end %>
   </div>
-</div>
+<% end %>

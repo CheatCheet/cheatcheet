@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  include Posts::BookmarkId
+
   load_and_authorize_resource
 
   before_action :set_post, except: %i[index new create]
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @posts = Post.includes(:stack).accessible_by(current_ability).with_rich_text_body_and_embeds.order(:created_at)
-    @posts = @posts.from_user(params[:user_id]) if params[:user_id]
-    @posts = @posts.related_to(params[:search]) if params[:search]
+    @posts = Post.includes(:stack).accessible_by(current_ability).with_rich_text_body
+    @posts = posts_query(@posts)
+    set_posts_bookmark_id
   end
 
   def show; end
@@ -52,6 +54,14 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def posts_query(posts)
+    posts = posts.from_user(params[:user_id]) if params[:user_id]
+    posts = posts.related_to(params[:search]) if params[:search]
+    posts = posts.from_stack(params[:stack]) if params[:stack]
+
+    posts
+  end
 
   def post_params
     params.require(:post).permit(:title, :body, :public, :stack_id, :user_id)
