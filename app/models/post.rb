@@ -13,6 +13,7 @@ class Post < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
   scope :from_user, ->(id) { where('user_id = ?', id) }
+  scope :from_stack, ->(stack_name) { includes(:stack).where(stack: { name: stack_name }) }
   scope :bookmarked, ->(user_id) { includes(:bookmarks).where(bookmarks: { user_id: user_id }) }
   scope :related_to, lambda { |value|
                        joins(:action_text_rich_text, :stack).where("posts.title ILIKE '%#{value}%' OR

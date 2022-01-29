@@ -11,10 +11,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.with_all_inclusions.accessible_by(current_ability)
-    @posts = @posts.from_user(params[:user_id]) if params[:user_id]
-    @posts = @posts.related_to(params[:search]) if params[:search]
-    set_paginated_posts
+    @posts = posts_query(@posts)
     set_posts_bookmark_id
+    set_paginated_posts
   end
 
   # TODO: set post bookmark id
@@ -58,6 +57,14 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def posts_query(posts)
+    posts = posts.from_user(params[:user_id]) if params[:user_id]
+    posts = posts.related_to(params[:search]) if params[:search]
+    posts = posts.from_stack(params[:stack]) if params[:stack]
+
+    posts
+  end
 
   def post_params
     params.require(:post).permit(:title, :body, :public, :stack_id, :user_id)

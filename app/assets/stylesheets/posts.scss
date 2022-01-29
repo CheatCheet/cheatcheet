@@ -29,6 +29,11 @@ form {
 }
 
 .post {
+  .post__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+  }
   .post__meta {
     color: grey;
     font-size: 1rem;
