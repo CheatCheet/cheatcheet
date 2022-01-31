@@ -1,5 +1,11 @@
-<div class="vote">
-  <%= render partial: 'posts/votes/form', locals: { post: post, value: true, disabled: user_signed_in? ? current_user.voted_up_on?(post) : true } %>
-  <span class="vote__total"><%= post.weighted_score %></span>
-  <%= render partial: 'posts/votes/form', locals: { post: post, value: false, disabled: user_signed_in? ? current_user.voted_down_on?(post) : true } %>
-</div>
+<%= turbo_frame_tag "vote_#{post.id}" do %>
+  <div class="vote">
+    <%= render partial: 'posts/votes/form', locals: { post: post, label: '+', disable: user_signed_in? ? current_user.voted_up_on?(post) : true } %>
+    <span class="vote__total"><%= post.get_upvotes.size %></span>
+    <% if post.get_upvotes.size.zero? %>
+      <%= render partial: 'posts/votes/form', locals: { post: post, label: '-', disable: true } %>
+    <% else %>
+      <%= render partial: 'posts/votes/form', locals: { post: post, label: '-', disable: user_signed_in? ? current_user.voted_down_on?(post) : true } %>
+    <% end %>
+  </div>
+<% end %>

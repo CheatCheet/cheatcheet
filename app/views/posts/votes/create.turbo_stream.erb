@@ -1,0 +1,1 @@
+<%= turbo_stream.replace("vote_#{@post.id}", partial: 'posts/votes/vote', locals: { post: @post }) %>
