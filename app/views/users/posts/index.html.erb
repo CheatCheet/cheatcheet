@@ -1,4 +1,4 @@
-<% if @posts.count.zero?%>
+<% if @posts.count.zero? %>
   <p>Create your first post</p>
 <% else %>
   <%= render 'posts/collection', infinite_scroll: infinite_scroll_on_current_page? %>
