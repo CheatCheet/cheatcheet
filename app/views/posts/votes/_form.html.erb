@@ -1,6 +1,13 @@
-<%= form_with url: post_votes_path(post), scope: :post do |f| %>
-  <%= f.hidden_field :vote, value: label %>
-  <%= button_tag type: 'submit', disabled: disable  do %>
+<% if user_signed_in? %>
+  <%= button_to post_votes_path(post, post: { vote: label }), method: :post, disabled: disable do %>
+    <% if label == '+' %>
+      <i class="fas fa-caret-up"></i>
+    <% else %>
+      <i class="fas fa-caret-down"></i>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= button_to new_user_session_path, method: :get do %>
     <% if label == '+' %>
       <i class="fas fa-caret-up"></i>
     <% else %>

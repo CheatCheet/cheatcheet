@@ -1,11 +1,13 @@
-<%= turbo_frame_tag "vote_#{post.id}" do %>
+<%= turbo_frame_tag "vote_#{post.id}", target: '_top' do %>
   <div class="vote">
-    <%= render partial: 'posts/votes/form', locals: { post: post, label: '+', disable: user_signed_in? ? current_user.voted_up_on?(post) : true } %>
-    <span class="vote__total"><b><%= post.get_upvotes.size %></b></span>
-    <% if post.get_upvotes.size.zero? %>
-      <%= render partial: 'posts/votes/form', locals: { post: post, label: '-', disable: true } %>
+    <% if user_signed_in? %>
+      <%= render partial: 'posts/votes/form', locals: { post: post, label: '+', disable: current_user.voted_up_on?(post) } %>
+      <span class="vote__total"><b><%= post.get_upvotes.size %></b></span>
+      <%= render partial: 'posts/votes/form', locals: { post: post, label: '-', disable: current_user.voted_down_on?(post) } %>
     <% else %>
-      <%= render partial: 'posts/votes/form', locals: { post: post, label: '-', disable: user_signed_in? ? current_user.voted_down_on?(post) : true } %>
+      <%= render partial: 'posts/votes/form', locals: { post: post, label: '+', disable: false } %>
+      <span class="vote__total"><b><%= post.get_upvotes.size %></b></span>
+      <%= render partial: 'posts/votes/form', locals: { post: post, label: '-', disable: false } %>
     <% end %>
   </div>
 <% end %>
