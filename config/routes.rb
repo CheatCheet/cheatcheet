@@ -6,16 +6,13 @@ Rails.application.routes.draw do
 
   devise_for :users, skip: [:registrations], controllers: { omniauth_callbacks: 'devise/omniauth' }
 
-  resources :posts do
-    resources :votes, only: :create, module: 'posts'
-  end
-
   namespace :users do
     resources :posts, only: :index
   end
 
   resources :posts do
     resources :bookmarks, only: %i[create]
+    resources :votes, only: :create, module: 'posts'
   end
 
   namespace :bookmarks do
