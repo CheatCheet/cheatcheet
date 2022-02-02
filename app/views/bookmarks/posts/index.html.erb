@@ -1,1 +1,5 @@
-<%= render collection: @posts, partial: 'posts/post' %>
+<% if @posts.count.zero? %>
+  <p>No posts bookmarked</p>
+<% else %>
+  <%= render 'posts/collection', infinite_scroll: infinite_scroll_on_current_page? %>
+<% end %>

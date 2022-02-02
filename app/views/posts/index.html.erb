@@ -1,4 +1,6 @@
-<%= turbo_frame_tag :posts do %>
+<% if @posts.count.zero? %>
+  <p>No Posts</p>
+<% else %>
   <%= render 'search' %>
-  <%= render collection: @posts, partial: 'post' %>
+  <%= render 'collection', infinite_scroll: infinite_scroll_on_current_page? %>
 <% end %>

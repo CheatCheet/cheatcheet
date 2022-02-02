@@ -3,5 +3,7 @@
 
 import { application } from './application'
 import SlimSelectController from './slim_select_controller.js'
+import ReturnToTopController from './return_to_top_controller.js'
 
 application.register('slim-select', SlimSelectController)
+application.register('return-to-top', ReturnToTopController)

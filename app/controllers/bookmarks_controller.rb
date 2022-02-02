@@ -7,6 +7,7 @@ class BookmarksController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     bookmark = Bookmark.new(user: current_user, post: @post)
+
     if bookmark.save
       @post.bookmark_id = bookmark.id
       render_bookmark_button

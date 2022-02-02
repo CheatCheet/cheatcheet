@@ -24,6 +24,50 @@ body {
   flex-direction: column;
 }
 
+#return-to-top {
+  position: sticky;
+  top: 90vh;
+  flex-grow:1;
+  z-index: -99;
+  opacity:0;
+  transition: all 0.4s ease;
+  margin-left: calc( (-100vw + 60rem ) /2);
+
+  &.active {
+    z-index: 99;
+    opacity: 1;
+  }
+
+  button {
+    padding: 16px;
+    font-size: 24px;
+    width: fit-content;
+  }
+}
+
+@media(max-width: 768px) {
+  #return-to-top  {
+    margin-left: 0px;
+
+    button {
+      font-size: 16px;
+      width: 100%;
+    }
+  }
+}
+
+.spinner-container {
+  width: 100%;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    font-size: 60px;
+  }
+}
+
 .w-100 {
   width: 100%;
 }

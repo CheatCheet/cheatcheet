@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 module PostsHelper
+  include Pagy::Frontend
+
+  def build_posts_url(page:)
+    url_for(only_path: false, params: { page: page })
+  end
+
   def created_at_date(post)
     post.created_at.strftime('%b %d, %Y')
   end
