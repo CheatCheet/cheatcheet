@@ -6,7 +6,7 @@ module Posts
     before_action :set_post
 
     def create
-      post_params[:vote] == '+' ? current_user.up_votes(@post) : current_user.down_votes(@post)
+      post_params[:vote] == 'up' ? current_user.up_votes(@post) : current_user.down_votes(@post)
     end
 
     private

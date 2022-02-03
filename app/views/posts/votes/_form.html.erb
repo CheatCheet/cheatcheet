@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <%= button_to post_votes_path(post, post: { vote: label }), method: :post, disabled: disable do %>
-    <% if label == '+' %>
+    <% if label == 'up' %>
       <i class="fas fa-caret-up"></i>
     <% else %>
       <i class="fas fa-caret-down"></i>
@@ -8,7 +8,7 @@
   <% end %>
 <% else %>
   <%= button_to new_user_session_path, method: :get do %>
-    <% if label == '+' %>
+    <% if label == 'up' %>
       <i class="fas fa-caret-up"></i>
     <% else %>
       <i class="fas fa-caret-down"></i>
