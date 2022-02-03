@@ -19,7 +19,7 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
 
   test 'it should create a downvote' do
     assert_difference -> { @post.get_downvotes.size } do
-      create_vote('-')
+      create_vote('down')
     end
   end
 
@@ -32,7 +32,7 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
 
   private
 
-  def create_vote(value = '+')
+  def create_vote(value = 'up')
     post post_votes_url(@post, params: { post: { vote: value } }, format: :turbo_stream)
 
     assert_response :success
