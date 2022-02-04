@@ -20,9 +20,13 @@ class Post < ApplicationRecord
                       action_text_rich_texts.body ILIKE '%#{value}%' OR stacks.name ILIKE '%#{value}%'")
                      }
 
-  attr_accessor :bookmark_id
-
   def self.with_all_inclusions
     includes(:stack).with_rich_text_body
+  end
+
+  def bookmark_id(bookmarks)
+    return unless bookmarks
+
+    bookmarks.where(post: self).first&.id
   end
 end

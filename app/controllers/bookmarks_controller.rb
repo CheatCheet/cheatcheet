@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class BookmarksController < ApplicationController
+  include Posts::SetBookmarks
+
   load_and_authorize_resource
   before_action :authenticate_user!
 
@@ -9,7 +11,7 @@ class BookmarksController < ApplicationController
     bookmark = Bookmark.new(user: current_user, post: @post)
 
     if bookmark.save
-      @post.bookmark_id = bookmark.id
+      set_bookmarks
       render_bookmark_button
     else
       render_error
@@ -39,7 +41,8 @@ class BookmarksController < ApplicationController
                                              partial: 'bookmarks/bookmark_options',
                                              locals: {
                                                user: current_user,
-                                               post: @post
+                                               post: @post,
+                                               bookmarks: @bookmarks
                                              })
   end
 end
