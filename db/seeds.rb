@@ -20,6 +20,10 @@ def post_bodies
     end
 end
 
+def random_post
+  Post.find(Post.pluck(:id).sample)
+end
+
 warn '==> Running stacks seeds'
 create_stacks
 warn '==> End of stacks seeds'
@@ -47,6 +51,13 @@ if Rails.env.development?
       user_id: admin.id,
       post_id: Post.ids.sample
     )
+  end
+
+  User.all.each do |user|
+    5.times do
+      user.up_votes(random_post)
+      user.down_votes(random_post)
+    end
   end
 
   warn '==> End of development environnement seed'
