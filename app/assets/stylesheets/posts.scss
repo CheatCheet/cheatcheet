@@ -39,8 +39,24 @@ form {
     font-size: 1rem;
     margin-top: -1rem;
   }
-  .post__content {
-    margin: 1rem 0;
+
+  .post__body {
+    display: flex;
+    turbo-frame {
+      display: flex;
+      .vote {
+        flex: 25%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 1vw;
+      }
+    }
+    .post__content {
+      width: 90%;
+      margin: 1rem 0;
+    }
   }
 }
 

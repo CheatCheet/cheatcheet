@@ -7,8 +7,11 @@
       <% end %>
     </div>
     <div class='post__meta'><em><%= created_at_date(post) %></em></div>
-    <div class='post__content'>
-      <%= post.body %>
+    <div class="post__body">
+      <%= render partial: 'posts/votes/vote', locals: { post: post } %>
+      <div class='post__content'>
+        <%= post.body %>
+      </div>
     </div>
     <%= link_to posts_url(stack: post.stack.name), target: '_top' do %>
       <button class="stack__button">
