@@ -3,11 +3,9 @@
 module PostsHelper
   include Pagy::Frontend
 
-  def build_posts_url(page:, params:)
-    url_for(only_path: false, params: { page: page,
-                                        stack: params[:stack],
-                                        user_id: params[:user_id],
-                                        search: params[:search] })
+  def build_posts_url(page:)
+    url_for(only_path: false,
+            params: { page: page }.merge(request.query_parameters.except(:page)))
   end
 
   def created_at_date(post)
