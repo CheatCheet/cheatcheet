@@ -6,7 +6,7 @@
       <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password' %>
     </div>
     <div class="login__actions">
-      <%= f.submit "Log in", class: 'login__submit' %>
+      <%= f.submit "Log in", class: 'login__submit', data: { turbo: false } %>
     </div>
   <% end %>
   <div class="login__oauth">
