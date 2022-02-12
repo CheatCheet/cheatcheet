@@ -19,7 +19,7 @@ module ActiveSupport
       visit new_user_session_url
       fill_in 'user_email', with: user.email
       fill_in 'user_password', with: 'password'
-      click_on 'Sign in'
+      find("input[type='submit']", class: 'login__submit').click
 
       assert_text 'Signed in successfully.'
     end

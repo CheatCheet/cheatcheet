@@ -4,7 +4,7 @@ require 'application_system_test_case'
 
 class FullWorkflowTest < ApplicationSystemTestCase
   setup do
-    log_as_admin
+    log_as(:post_reader)
     # Bullet.unused_eager_loading_enable = false
   end
 
