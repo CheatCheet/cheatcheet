@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   include Posts::Pagination
-  include Posts::BookmarkId
+  include Posts::SetBookmarks
 
   load_and_authorize_resource
 
@@ -12,8 +12,8 @@ class PostsController < ApplicationController
   def index
     @posts = Post.with_all_inclusions.accessible_by(current_ability)
     @posts = posts_query(@posts)
-    set_posts_bookmark_id
     set_paginated_posts
+    set_bookmarks
   end
 
   # TODO: set post bookmark id

@@ -3,7 +3,7 @@
 module Bookmarks
   class PostsController < ApplicationController
     include Posts::Pagination
-    include Posts::BookmarkId
+    include Posts::SetBookmarks
 
     load_and_authorize_resource
     before_action :authenticate_user!
@@ -11,7 +11,7 @@ module Bookmarks
     def index
       @posts = Post.with_all_inclusions.bookmarked(current_user)
       set_paginated_posts
-      set_posts_bookmark_id
+      set_bookmarks
     end
   end
 end
