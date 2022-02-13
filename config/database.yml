@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: cheatcheet_production
-  username: cheatcheet
-  password: <%= ENV['CHEATCHEET_DATABASE_PASSWORD'] %>
+  # database: cheatcheet_production
+  # username: cheatcheet
+  # password: <%= ENV['CHEATCHEET_DATABASE_PASSWORD'] %>
