@@ -13,5 +13,15 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    def log_as(user_role)
+      user = users(user_role)
+
+      visit new_user_session_url
+      fill_in 'user_email', with: user.email
+      fill_in 'user_password', with: 'password'
+      find("input[type='submit']", class: 'login__submit').click
+
+      assert_text 'Signed in successfully.'
+    end
   end
 end
