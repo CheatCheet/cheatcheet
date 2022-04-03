@@ -3,7 +3,6 @@ import SlimSelect from 'slim-select'
 
 export default class extends Controller {
   connect() {
-    console.log('Hello World')
     const base = { select: this.element, closeOnSelect: false }
     const addSection = this.addableOption()
     const selectOptions = {
