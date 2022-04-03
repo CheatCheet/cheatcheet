@@ -9,36 +9,34 @@ gem 'acts_as_votable'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'cancancan'
 gem 'devise'
-gem 'hotwire-rails'
-# image_processing - Active Storage Requirements to upload image in post body
 gem 'image_processing', '>= 1.2'
+gem 'importmap-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem 'omniauth-rails_csrf_protection'
-# pagination gem with infinite scrolling options
 gem 'pagy'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.0'
-gem 'sass-rails', '>= 6'
-gem 'webpacker', '~> 5.0'
+gem 'sassc-rails'
+gem 'sprockets-rails'
+gem 'stimulus-rails'
+gem 'turbo-rails'
 
 group :development, :test do
-  # N+1 query detecting gem
   gem 'bullet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'faker'
 end
 
 group :development do
-  gem 'listen', '~> 3.3'
   gem 'rubocop'
   gem 'rubocop-rails'
-  gem 'web-console', '>= 4.1.0'
+  gem 'web-console'
 end
 
 group :test do
-  gem 'capybara', '>= 3.26'
+  gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end

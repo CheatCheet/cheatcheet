@@ -13,11 +13,6 @@
  *= require_tree .
  *= require_self
  */
-@import url('simpledotcss');
-
-body {
-  max-width: 60rem;
-}
 
 .container {
   display: flex;
@@ -80,10 +75,6 @@ body {
   .trix-button {
     background-color: #ffff !important;
   }
-}
-
-body {
-  max-width: 50rem !important;
 }
 
 button, input[type='submit'] {
