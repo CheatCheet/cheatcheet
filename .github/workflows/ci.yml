@@ -45,7 +45,7 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Setup test database
+      - name: Setup test database and run tests
         env:
           DATABASE_URL: postgres://postgres:password@localhost:5432/test
           RAILS_ENV: test
